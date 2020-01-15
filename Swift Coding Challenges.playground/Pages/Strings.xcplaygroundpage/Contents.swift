@@ -51,3 +51,30 @@ func challenge5d(input: String, char: String) -> Int {
     let modified = input.replacingOccurrences(of: char, with: "") //calculate the number of times a letter appears in a string by removing it, then comparing the lengths of the original and modified strings
     return input.count - modified.count
 }
+
+
+//: ### Challenge 6: Remove duplicate letters from a string
+//: Write a function that accepts a string as its input, and returns the same string just with duplicate letters removed.
+func challenge6a(string: String) -> String {
+    let arrayedString = string.map { String($0) } //turns string to array of strings
+    let set = NSOrderedSet(array: arrayedString) //Ordered set, so it removes duplicated elements from arrayedString
+    let lettersArray = Array(set) as! Array<String> //as! Array<String> is needed to put it back as a string
+    return lettersArray.joined() //put them back to a string
+}
+print(challenge6a(string: "KObeee"))
+
+func challenge6b(string: String) -> String {
+    var usedChars = [Character]()
+    for letter in string {
+        if !usedChars.contains(letter) { //if letter is in our usedArray, then append that character
+            usedChars.append(letter)
+        }
+    }
+    return String(usedChars)
+}
+
+func challenge6c(string: String) -> String {
+    var used = [Character: Bool]()
+    let result = string.filter {       used.updateValue(true, forKey: $0) == nil    }
+    return String(result)
+}

@@ -86,7 +86,7 @@ func challenge7(input: String) -> String { // That splits a string up by its spa
     return components.filter { !$0.isEmpty }.joined(separator: " ")
 }
 
-func challenge7a(input: String) -> String {
+func challenge7a(input: String) -> String { //perfect solution
     var seenSpace = false
     var returnValue = ""
     for letter in input {
@@ -101,3 +101,6 @@ func challenge7a(input: String) -> String {
     return returnValue
 }
 
+func challenge7b(input: String) -> String { //50% slower because of regex, but almost unnoticeable
+    return input.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil) //"[space]+" means "match one or more spaces" so that will cause all multiple spaces to be replaced with a single space
+}

@@ -86,4 +86,18 @@ func challenge7(input: String) -> String { // That splits a string up by its spa
     return components.filter { !$0.isEmpty }.joined(separator: " ")
 }
 
+func challenge7a(input: String) -> String {
+    var seenSpace = false
+    var returnValue = ""
+    for letter in input {
+        if letter == " " {
+            if seenSpace { continue } //if we see a space again then continue, meaning do not append it to returnValue
+            seenSpace = true
+        } else {
+            seenSpace = false
+        }
+        returnValue.append(letter)
+    }
+    return returnValue
+}
 

@@ -61,7 +61,7 @@ func challenge6a(string: String) -> String {
     let lettersArray = Array(set) as! Array<String> //as! Array<String> is needed to put it back as a string
     return lettersArray.joined() //put them back to a string
 }
-print(challenge6a(string: "KObeee"))
+print(challenge6a(string: "Kobeee"))
 
 func challenge6b(string: String) -> String {
     var usedChars = [Character]()
@@ -78,3 +78,12 @@ func challenge6c(string: String) -> String {
     let result = string.filter {       used.updateValue(true, forKey: $0) == nil    }
     return String(result)
 }
+
+//: ### Challenge 7: Condense whitespace
+//: Write a function that returns a strign with any consecutive spaces related with a single space
+func challenge7(input: String) -> String { // That splits a string up by its spaces, then removes any empty items, and joins the remainder using a space, and is the ideal solution
+    let components = input.components(separatedBy: .whitespacesAndNewlines)
+    return components.filter { !$0.isEmpty }.joined(separator: " ")
+}
+
+

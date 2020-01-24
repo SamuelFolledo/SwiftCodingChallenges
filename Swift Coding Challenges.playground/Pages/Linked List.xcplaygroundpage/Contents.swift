@@ -63,18 +63,47 @@ class LinkedList {
     }
 }
 
-let list = LinkedList()
-list.insert(value: 1)
-list.insert(value: 2)
-//list.insert(value: 3)
-list.insert(value: 4)
-list.insert(value: 5)
+//let list = LinkedList()
+//list.insert(value: 1)
+//list.insert(value: 2)
+////list.insert(value: 3)
+//list.insert(value: 4)
+//list.insert(value: 5)
+////list.delete(value: 5)
+//list.insertInOrder(value: 3)
+//list.displayListItems()
 
-//list.delete(value: 5)
-list.insertInOrder(value: 3)
+let node4 = Node(value: 4, next: nil)
+let node3 = Node(value: 3, next: node4)
+let node2 = Node(value: 2, next: node3)
+let node1 = Node(value: 1, next: node2)
 
+func printList(head: Node?) {
+    var current = head
+    while current != nil {
+        print(current?.value ?? -1)
+        current = current?.next
+    }
+}
 
+print(printList(head: node1))
 
-list.displayListItems()
+func reverseList(head: Node?) -> Node? { //trick here is each traverse, we want to change the current's next to point to previous (nil at start) before assigning previous as current.
+    print("Reversed List")
+    var current = head
+    var prev: Node?
+    var next: Node?
+    while current != nil { //loop til we get to tail
+        next = current?.next //before we change current.next to be previous, assign next as the current.next
+        current?.next = prev //current next will be the previous node
+//        print("Prev = \(prev?.value ?? -1), Current = \(current?.value ?? -1), Next = \(next?.value ?? -1)")
+        prev = current //
+        current = next //we had to create a next reference to assign as new current because we will change the current's next to the previous node
+    }
+    return prev
+}
+
+print(printList(head: reverseList(head: node1)))
+
 
 //: [Next](@next)

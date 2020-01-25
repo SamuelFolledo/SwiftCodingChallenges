@@ -106,4 +106,8 @@ func reverseList(head: Node?) -> Node? { //trick here is each traverse, we want 
 print(printList(head: reverseList(head: node1)))
 
 
+/*
+REFERENCES:
+ https://www.youtube.com/watch?v=gNu-F_LnC0I
+ */
 //: [Next](@next)

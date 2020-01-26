@@ -34,7 +34,6 @@ let node14 = Node(value: 14, leftChild: node11, rightChild: node20)
 //root Node
 let rootNode = Node(value: 10, leftChild: node5, rightChild: node14)
 
-
 func search(node: Node?, searchValue: Int) -> Bool {
     if node == nil { //if node is nil and return false
         return false

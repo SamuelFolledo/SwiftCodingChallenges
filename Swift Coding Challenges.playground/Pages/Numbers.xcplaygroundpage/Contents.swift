@@ -33,4 +33,39 @@ func bubbleSortArray(arr: [Int]) -> [Int] {
 
 bubbleSortArray(arr: [-5, -3, -1, 0, 1, 2])
 
+
+import UIKit
+//: Chellenge 52
+protocol Numeric { //First, creating a new protocol that requires conforming types to be able to initialize themselves with an empty value (i.e. 0) and add instances of itself to itself:
+    init()
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+
+extension Int: Numeric {} //make Int, Float, and Double conform to that protocol:
+extension Float: Numeric {}
+extension Double: Numeric {}
+
+func sumArray<T: Numeric>(numbers: [T]) -> T { //Third, defining a function that accepts an array of numbers that conform to Numeric and returns a single value. //<T: Numeric> is required whenever you use generics as parameter
+    var total = T()
+    
+    for num in numbers {
+        total = total + num
+    }
+    
+    return total
+}
+
+print(sumArray(numbers: [1,2,3,4,5,6,8.0]))
+print(sumArray(numbers: [1,4,3,6,5,6,8.0]))
+print(sumArray(numbers: [1,7,2.3,4,9,6,11.3]))
+
+
+import Accelerate //faster for slower
+
+func challenge52c(numbers: [Double]) -> Double {
+    var result: Double = 0.0
+    vDSP_sveD(numbers, 1, &result, vDSP_Length(numbers.count))
+    return result
+}
+
 //: [Next](@next)

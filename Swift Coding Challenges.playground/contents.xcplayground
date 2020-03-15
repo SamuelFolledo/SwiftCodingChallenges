@@ -6,6 +6,7 @@
         <page name='Linked List'/>
         <page name='Binary Tree'/>
         <page name='Numbers'/>
+        <page name='Collections'/>
         <page name='Day11-Animations'/>
     </pages>
 </playground>

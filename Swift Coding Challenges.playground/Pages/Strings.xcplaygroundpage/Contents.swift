@@ -104,3 +104,12 @@ func challenge7a(input: String) -> String { //perfect solution
 func challenge7b(input: String) -> String { //50% slower because of regex, but almost unnoticeable
     return input.replacingOccurrences(of: " +", with: " ", options: .regularExpression, range: nil) //"[space]+" means "match one or more spaces" so that will cause all multiple spaces to be replaced with a single space
 }
+
+//: ### Challenge 8: String is rotated
+//: Write a function that accepts two strings, and returns true if one string is rotation of the other, taking letter case into account.
+func challenge8(input: String, rotated: String) -> Bool {
+    guard input.count == rotated.count else { return false }
+    let combined = input + input
+    return combined.contains(rotated)
+}
+

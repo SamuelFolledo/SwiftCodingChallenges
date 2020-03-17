@@ -211,6 +211,25 @@ func challenge12(input: String) -> String {
     return bestPrefix
 }
 
+//: Personal Challenge: Find longest suffix
+public extension StringProtocol {
+///        "Hello world!".commonSuffix(with: "It's cold!") = "ld!"
+    func commonSuffix<T: StringProtocol>(with aString: T, options: String.CompareOptions = []) -> String {
+        guard !isEmpty && !aString.isEmpty else { return "" }
+        var idx = endIndex
+        var strIdx = aString.endIndex
+        repeat {
+            formIndex(before: &idx)
+            aString.formIndex(before: &strIdx)
+            guard String(self[idx]).compare(String(aString[strIdx]), options: options) == .orderedSame else {
+                formIndex(after: &idx)
+                break
+            }
+        } while idx > startIndex && strIdx > aString.startIndex
+        return String(self[idx...])
+    }
+}
+
 //: ### Challenge 13:
 //:
 

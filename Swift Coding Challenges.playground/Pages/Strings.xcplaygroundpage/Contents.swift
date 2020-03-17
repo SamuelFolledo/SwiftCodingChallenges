@@ -107,6 +107,7 @@ func challenge7b(input: String) -> String { //50% slower because of regex, but a
 
 //: ### Challenge 8: String is rotated
 //: Write a function that accepts two strings, and returns true if one string is rotation of the other, taking letter case into account.
+//: Tip: A string rotation is when you take a string, remove some letters from its end, then append them to the front. For example, “swift” rotated by two characters would be “ftswi”.
 func challenge8(input: String, rotated: String) -> Bool {
     guard input.count == rotated.count else { return false }
     let combined = input + input
@@ -115,9 +116,41 @@ func challenge8(input: String, rotated: String) -> Bool {
 
 //: ### Challenge 9: Find pangrams
 //: Write a function that returns true if it is given a string that is an English pangram, ignoring letter case.
+//: Tip - A pangram is a string that contains every letter of the alphabet at least once.
 func challenge9(input: String) -> Bool {
     let set = Set(input.lowercased())
     let letters = set.filter { $0 >= "a" && $0 <= "z" }
     return letters.count == 26
 }
 
+//: ### Challenge 10: Vowels and consonants
+//: Given a string in English, return a tuple containing the number of vowels and consonants.
+
+
+
+//: ### Challenge 11:
+//:
+
+//: ### Challenge 12:
+//:
+
+//: ### Challenge 13:
+//:
+
+//: ### Challenge 14:
+//:
+
+//: ### Challenge 15:
+//:
+
+//: ### Challenge 16:
+//:
+
+//: ### Challenge 17:
+//:
+
+//: ### Challenge 18:
+//:
+
+//: ### Challenge 19:
+//:

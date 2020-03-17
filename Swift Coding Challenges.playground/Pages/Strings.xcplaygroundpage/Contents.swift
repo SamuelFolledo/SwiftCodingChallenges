@@ -192,8 +192,24 @@ func challenge11(first: String, second: String) -> Bool {
 }
 
 
-//: ### Challenge 12:
-//:
+//: ### Challenge 12: Find longest prefix
+//: Write a function that accepts a string of words with a similar prefix, separated by spaces, and returns the longest substring that prefixes all words.
+func challenge12(input: String) -> String {
+    let parts = input.components(separatedBy: " ")
+    guard let first = parts.first else { return "" }
+    var currentPrefix = ""
+    var bestPrefix = ""
+    for letter in first {
+        currentPrefix.append(letter)
+        for word in parts {
+            if !word.hasPrefix(currentPrefix) {
+                return bestPrefix
+            }
+        }
+        bestPrefix = currentPrefix
+    }
+    return bestPrefix
+}
 
 //: ### Challenge 13:
 //:

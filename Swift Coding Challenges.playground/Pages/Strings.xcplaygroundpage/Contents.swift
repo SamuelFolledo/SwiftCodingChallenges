@@ -125,7 +125,37 @@ func challenge9(input: String) -> Bool {
 
 //: ### Challenge 10: Vowels and consonants
 //: Given a string in English, return a tuple containing the number of vowels and consonants.
+func challenge10a(input: String) -> (vowels: Int, consonants: Int) {
+    let vowels = CharacterSet(charactersIn: "aeiou")
+    let consonants = CharacterSet(charactersIn: "bcdfghjklmnpqrstvwxyz")
+    var vowelCount = 0
+    var consonantCount = 0
+    for letter in input.lowercased() {
+        let stringLetter = String(letter)
+        if stringLetter.rangeOfCharacter(from: vowels) != nil {
+            vowelCount += 1
+        } else if stringLetter.rangeOfCharacter(from: consonants) != nil {
+            consonantCount += 1
+        }
+    }
+    return (vowelCount, consonantCount)
+}
 
+func challenge10b(input: String) -> (vowels: Int, consonants: Int) {
+    let vowels = "aeiou"
+    let consonants = "bcdfghjklmnpqrstvwxyz"
+    var vowelCount = 0
+    var consonantCount = 0
+    for letter in input.lowercased() {
+        let stringLetter = String(letter)
+        if vowels.contains(stringLetter) {
+            vowelCount += 1
+        } else if consonants.contains(stringLetter) {
+            consonantCount += 1
+        }
+    }
+    return (vowelCount, consonantCount)
+}
 
 
 //: ### Challenge 11:

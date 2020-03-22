@@ -252,6 +252,21 @@ func challenge13a(input: String) -> String {
     }
     return returnValue
 }
+
+func challenge13b(input: String) -> String {
+    var returnValue = ""
+    var letterCounter = 0
+    var letterArray = Array(input)
+    for i in 0 ..< letterArray.count {
+        letterCounter += 1
+        if i + 1 == letterArray.count || letterArray[i] != letterArray[i + 1] {
+            returnValue += "\(letterArray[i])\(letterCounter)"
+            letterCounter = 0
+        }
+    }
+    return returnValue
+}
+
    
 
 

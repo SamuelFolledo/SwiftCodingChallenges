@@ -111,3 +111,182 @@ REFERENCES:
  https://www.youtube.com/watch?v=gNu-F_LnC0I
  */
 //: [Next](@next)
+
+
+
+
+
+
+
+//Advanced LinkedList sample
+
+//func that removes all the occurences of a ll
+// if ll was 1,6,8,8,4 [4] -> 1,6,8,8
+public class Node<T> {
+    public var value: T
+    public var next: Node?
+    
+    public init(value: T, next: Node? = nil) {
+        self.value = value
+        self.next = next
+    }
+}
+
+extension Node: CustomStringConvertible {
+    public var description: String {
+        guard let next = next else {
+            return "\(value)"
+        }
+        return "\(value) -> " + String(describing: next) + " "
+    }
+}
+
+public struct LinkedList<T> {
+    
+    public var head: Node<T>?
+    public var tail: Node<T>?
+    public var size: Int = 0
+    
+    public init() {}
+    
+    public var isEmpty: Bool {
+        return head == nil
+    }
+
+    ///Adding at the beginning of the list (head-first insertion).
+    public mutating func push(_ value: T) {
+        head = Node(value: value, next: head)
+        if tail == nil {
+            tail = head
+        }
+        size += 1
+    }
+    
+    ///Adds a value at the end of the list (tail-end insertion).
+    public mutating func append(_ value: T) {
+        guard !isEmpty else {
+            push(value)
+            return
+        }
+        tail!.next = Node(value: value)
+        tail = tail!.next
+        size += 1
+        
+    }
+    
+    ///Inserts a value in a specific place in the list.
+    ///- First find the node
+    ///- Then insert the new node
+    public func node(at index: Int) -> Node<T>? {
+        var currentNode = head
+        var currentIndex = 0
+        
+        while currentNode != nil && currentIndex < index {
+            currentNode = currentNode!.next
+            currentIndex += 1
+        }
+        return currentNode
+    }
+    
+    @discardableResult public mutating func insert(_ value: T, after node: Node<T>) -> Node<T> {
+        guard tail !== node else {
+            append(value)
+            return tail!
+        }
+        node.next = Node(value: value, next: node.next)
+        size += 1
+        return node.next!
+    }
+    
+    ///Removes the first node.
+    @discardableResult public mutating func pop() -> T? {
+        defer {
+            head = head?.next
+            if isEmpty {
+                tail = nil
+            }
+        }
+        size -= 1
+        return head?.value
+    }
+    
+    ///Removes the last node
+    @discardableResult public mutating func removeLast() -> T? {
+        guard let head = head else {
+            return nil
+        }
+        guard head.next != nil else {
+            return pop()
+        }
+        var prev = head
+        var current = head
+        while let next = current.next {
+            prev = current
+            current = next
+        }
+        prev.next = nil
+        tail = prev
+        size -= 1
+        return current.value
+    }
+    
+    ///Removes a value at a specific index
+    @discardableResult public mutating func remove(after node: Node<T>) -> T? {
+        defer {
+            if node.next === tail {
+                tail = node
+            }
+            node.next = node.next?.next
+        }
+        size -= 1
+        return node.next?.value
+    }
+    
+    func displayListItems() {
+        print("Here is what's inside your list")
+        var current = head
+        while current != nil { //will iterate until reaching tail when next is nil
+            print(current!.value,"\n---------")
+            current = current?.next
+        }
+    }
+}
+
+extension LinkedList where T: Equatable {
+    
+    public mutating func removeOccurences(num: T) {
+        if size == 0 {
+            return
+        }
+        //create a prev
+        var prev = head
+        var current = head?.next
+        if prev?.value == num { //if head has the value
+            pop()
+        }
+        //go through each node's data starting at head and see if the node's data is a num
+        while current != nil {
+            if current?.value == num {
+                prev?.next = current?.next
+            }
+            prev = current
+            current = current?.next
+        }
+        //if we did find a num, prev's next to be the currentNode's next
+        //keep looking until we reach the tail
+    }
+}
+
+let nums = [1,2,3,4,4,5]
+var ll = LinkedList<Node<Int>>()
+var prevNode: Node<Int>? = nil
+for num in nums {
+    let node = Node.init(value: num, next: prevNode)
+    ll.append(node)
+    prevNode = node
+}
+ll.displayListItems()
+print("\n=================")
+let node = Node.init(value: 3)
+ll.displayListItems()
+

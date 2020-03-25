@@ -267,9 +267,6 @@ func challenge13b(input: String) -> String {
     return returnValue
 }
 
-   
-
-
 //: ### Challenge 14:
 //:
 

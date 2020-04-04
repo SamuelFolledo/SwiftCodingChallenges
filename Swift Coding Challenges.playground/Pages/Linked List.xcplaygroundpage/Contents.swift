@@ -122,17 +122,17 @@ REFERENCES:
 
 //func that removes all the occurences of a ll
 // if ll was 1,6,8,8,4 [4] -> 1,6,8,8
-public class Node<T> {
+public class TNode<T> {
     public var value: T
-    public var next: Node?
+    public var next: TNode?
     
-    public init(value: T, next: Node? = nil) {
+    public init(value: T, next: TNode? = nil) {
         self.value = value
         self.next = next
     }
 }
 
-extension Node: CustomStringConvertible {
+extension TNode: CustomStringConvertible {
     public var description: String {
         guard let next = next else {
             return "\(value)"
@@ -141,10 +141,10 @@ extension Node: CustomStringConvertible {
     }
 }
 
-public struct LinkedList<T> {
+public struct TLinkedList<T> {
     
-    public var head: Node<T>?
-    public var tail: Node<T>?
+    public var head: TNode<T>?
+    public var tail: TNode<T>?
     public var size: Int = 0
     
     public init() {}
@@ -155,7 +155,7 @@ public struct LinkedList<T> {
 
     ///Adding at the beginning of the list (head-first insertion).
     public mutating func push(_ value: T) {
-        head = Node(value: value, next: head)
+        head = TNode(value: value, next: head)
         if tail == nil {
             tail = head
         }
@@ -168,7 +168,7 @@ public struct LinkedList<T> {
             push(value)
             return
         }
-        tail!.next = Node(value: value)
+        tail!.next = TNode(value: value)
         tail = tail!.next
         size += 1
         
@@ -177,7 +177,7 @@ public struct LinkedList<T> {
     ///Inserts a value in a specific place in the list.
     ///- First find the node
     ///- Then insert the new node
-    public func node(at index: Int) -> Node<T>? {
+    public func insertTNode(at index: Int) -> TNode<T>? {
         var currentNode = head
         var currentIndex = 0
         
@@ -188,12 +188,12 @@ public struct LinkedList<T> {
         return currentNode
     }
     
-    @discardableResult public mutating func insert(_ value: T, after node: Node<T>) -> Node<T> {
+    @discardableResult public mutating func insert(_ value: T, after node: TNode<T>) -> TNode<T> {
         guard tail !== node else {
             append(value)
             return tail!
         }
-        node.next = Node(value: value, next: node.next)
+        node.next = TNode(value: value, next: node.next)
         size += 1
         return node.next!
     }
@@ -231,7 +231,7 @@ public struct LinkedList<T> {
     }
     
     ///Removes a value at a specific index
-    @discardableResult public mutating func remove(after node: Node<T>) -> T? {
+    @discardableResult public mutating func remove(after node: TNode<T>) -> T? {
         defer {
             if node.next === tail {
                 tail = node
@@ -252,7 +252,7 @@ public struct LinkedList<T> {
     }
 }
 
-extension LinkedList where T: Equatable {
+extension TLinkedList where T: Equatable {
     
     public mutating func removeOccurences(num: T) {
         if size == 0 {
@@ -278,15 +278,15 @@ extension LinkedList where T: Equatable {
 }
 
 let nums = [1,2,3,4,4,5]
-var ll = LinkedList<Node<Int>>()
-var prevNode: Node<Int>? = nil
+var ll = TLinkedList<TNode<Int>>()
+var prevNode: TNode<Int>? = nil
 for num in nums {
-    let node = Node.init(value: num, next: prevNode)
+    let node = TNode.init(value: num, next: prevNode)
     ll.append(node)
     prevNode = node
 }
 ll.displayListItems()
 print("\n=================")
-let node = Node.init(value: 3)
+let node = TNode.init(value: 3)
 ll.displayListItems()
 

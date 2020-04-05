@@ -51,10 +51,34 @@ l2.next = newNode
 newNode = ListNode(4)
 l2.next!.next = newNode
 
-//l1.displayListItems()
-//l2.displayListItems()
-
 var l3 = addTwoNumbers(l1, l2)
 l3?.displayListItems()
+
+//------------------------------------------------------------------------------------------------------------------------
+/*2)
+ Reverse Integer = https://leetcode.com/problems/reverse-integer/submissions/
+ - Given a 32-bit signed integer, reverse digits of an integer.
+ Example 1: 123 -> 321
+ Example 2: -123 -> -321
+ Example 3: 120 -> 21
+*/
+
+///My fiirst super naive solution
+//func reverse(_ x: Int) -> Int {
+//    return Int(String(Array(String(x)).reversed()))! //put x in a string, then turn it to an array which can be reversed, turn it back to a string, and then to an int
+//}
+
+func reverse(_ x: Int) -> Int {
+    var x = x
+    var output: Int = 0
+    while x != 0 {
+        let remainder = x%10 //get x/10 remainder to get the last digit first
+        x = x/10 //divide x
+        output = output * 10 + remainder //multiply output by 10 and add remainder
+        if (output > Int32.max || output < Int32.min) { return 0 }
+    }
+    return output
+}
+print(reverse(-12040)) //returns -4021
 
 //: [Next](@next)

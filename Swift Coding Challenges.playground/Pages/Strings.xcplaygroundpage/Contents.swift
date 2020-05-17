@@ -269,6 +269,14 @@ func challenge13b(input: String) -> String {
 
 //: ### Challenge 14:
 //:
+//Challenge 14: String permutations
+//Write a function that prints all possible permutations of a given input string.
+//Hints
+//Hint #1: Your function will need to call itself.
+//Hint #2: The number of lines printed should be the factorial of the length of your string, e.g. “wombat” has six characters, so will have 6! permutations: 6 x 5 x 4 x 3 x 2 x 1, or 720.
+//Hint #3: You’ll find it easiest to convert the string to a character array for easier indexing.
+//Hint #4: Each time your function is called, it should loop through all letters in the string so that all combinations are generated. Hint #5: You can slice arrays using strArray[0...3]. Hint #6: You can convert string array slices into strings just by using an initializer: String(strArray[0...3]).
+
 
 //: ### Challenge 15:
 //:

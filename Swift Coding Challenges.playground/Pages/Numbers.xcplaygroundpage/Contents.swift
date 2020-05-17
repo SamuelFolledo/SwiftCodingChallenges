@@ -55,9 +55,9 @@ func sumArray<T: Numeric>(numbers: [T]) -> T { //Third, defining a function that
     return total
 }
 
-print(sumArray(numbers: [1,2,3,4,5,6,8.0]))
+print(sumArray(numbers: [1,2,3.901919,4,5,6,8.0]))
 print(sumArray(numbers: [1,4,3,6,5,6,8.0]))
-print(sumArray(numbers: [1,7,2.3,4,9,6,11.3]))
+print(sumArray(numbers: [1,7,2.3,4.099,9,6,11.3]))
 
 
 import Accelerate //faster for slower
@@ -67,5 +67,7 @@ func challenge52c(numbers: [Double]) -> Double {
     vDSP_sveD(numbers, 1, &result, vDSP_Length(numbers.count))
     return result
 }
+
+
 
 //: [Next](@next)

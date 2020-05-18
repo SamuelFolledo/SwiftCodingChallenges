@@ -277,6 +277,27 @@ func challenge13b(input: String) -> String {
 //Hint #3: You’ll find it easiest to convert the string to a character array for easier indexing.
 //Hint #4: Each time your function is called, it should loop through all letters in the string so that all combinations are generated. Hint #5: You can slice arrays using strArray[0...3]. Hint #6: You can convert string array slices into strings just by using an initializer: String(strArray[0...3]).
 
+func challenge14(string: String, current: String = "") {
+    let length = string.count
+    let strArray = Array(string)
+    if (length == 0) {       // there's nothing left to re-arrange; print the result
+        print("If", current)
+        print("******")
+    } else {
+        print("Else", current)
+        // loop through every character
+        for i in 0 ..< length {
+            // get the letters before me
+            let left = String(strArray[0 ..< i])
+            // get the letters after me
+            let right = String(strArray[i+1 ..< length])
+            // put those two together and carry on
+            challenge14(string: left + right, current: current + String(strArray[i]))
+        }
+    }
+}
+
+challenge14(string: "123")
 
 //: ### Challenge 15:
 //:

@@ -69,20 +69,30 @@ func challenge52c(numbers: [Double]) -> Double {
 }
 
 
-//CHALLENGE 16: Fizz Buzz
-//Difficulty: Easy
-//Write a function that counts from 1 through 100, and prints “Fizz” if the counter is evenly divisible by 3, “Buzz” if it’s evenly divisible by 5, “Fizz Buzz” if it’s even divisible by three and five, or the counter number for all other cases.
-//Sample input and output
-//• 1 should print “1”
-//• 2 should print “2”
-//• 3 should print “Fizz”
-//• 4 should print “4”
-//• 5 should print “Buzz”
-//• 15 should print “Fizz Buzz”
-/*Hints
- Hint #1: You’ll need to use modulus: %.
- Hint #2: Check for the “Fizz Buzz” case first, because that’s most specific.
- Hint #3: Remember to use the closed range operator to include the number 100 at the end.
+/*: ## Challenge 16: Fizz Buzz
+
+Difficulty: Easy
+ Write a function that counts from 1 through 100, and prints “Fizz” if the counter is evenly divisible by 3, “Buzz” if it’s evenly divisible by 5, “Fizz Buzz” if it’s even divisible by three and five, or the counter number for all other cases.
+ Sample input and output
+ 
+• 1 should print “1”
+ 
+• 2 should print “2”
+ 
+• 3 should print “Fizz”
+ 
+• 4 should print “4”
+ 
+• 5 should print “Buzz”
+ 
+• 15 should print “Fizz Buzz”
+ 
+#### Hints
+Hint #1: You’ll need to use modulus: %.
+ 
+Hint #2: Check for the “Fizz Buzz” case first, because that’s most specific.
+ 
+Hint #3: Remember to use the closed range operator to include the number 100 at the end.
 */
 
 func challenge16() {
@@ -98,7 +108,7 @@ func challenge16() {
         }
     }
 }
-challenge16()
+//challenge16()
 
 //slightly more efficient as we are not evaluating num % 3 twice
 func challenge16b() {
@@ -116,5 +126,66 @@ func challenge16b() {
         }
     }
 }
+
+/*: ## Challenge 17: Generate a random number in a range
+Difficulty: Easy
+Write a function that accepts positive minimum and maximum integers, and returns a random number between those two bounds, inclusive.
+ #### Hints
+ 
+ Hint #1: There are lots of ways to generate random numbers in Swift; you’ll be judged –  silently or openly – on your choice.
+ 
+ Hint #2: Keep in mind that lots of random number generators generate from 0 up to a certain point so you’ll need to write code to count from an arbitrary number upwards.
+ 
+ Hint #3: Also remember that lots of random number generators generate up to but excluding the maximum, so you should add 1 to make sure your tests pass.
+ 
+ Hint #4: Take a look at ```arc4random_uniform().```
+*/
+
+
+/*: ## Challenge 18: Recreate the pow() function
+
+ 
+ */
+
+/*: ## Challenge 19: Swap two numbers
+
+
+*/
+
+/*: ## Challenge 20: Number is prime
+
+
+*/
+
+/*: ## Challenge 21: Counting binary ones
+
+
+*/
+
+/*: ## Challenge 22: Binary reverse
+
+
+*/
+
+/*: ## Challenge 23: Integer disguised as string
+
+
+*/
+
+/*: ## Challenge 24: Add numbers inside a string
+
+
+*/
+
+/*: ## Challenge 25: Calculate a square root by hand
+
+
+*/
+
+
+/*: ## Challenge 26: Subtract without subtract
+ 
+*/
+
 
 //: [Next](@next)

@@ -85,5 +85,18 @@ func challenge52c(numbers: [Double]) -> Double {
  Hint #3: Remember to use the closed range operator to include the number 100 at the end.
 */
 
-
+func challenge16() {
+    for num in 1...100 {
+        if num % 3 == 0 && num % 5 == 0 {
+            print("Fizz Buzz")
+        } else if num % 3 == 0 {
+            print("Fizz")
+        } else if num % 5 == 0 {
+            print("Buzz")
+        } else {
+            print(num)
+        }
+    }
+}
+challenge16()
 //: [Next](@next)

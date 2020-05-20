@@ -314,6 +314,11 @@ challenge14(string: "123")
  Hint #4: You want to convert an array of left to right strings into an array of right to left strings, all without using a loop - this is a perfect use for map().
  Hint #5: Once you have an array of reversed strings, you can create a single string using joined().
 */
+func challenge15(input: String) -> String {
+    let words = input.components(separatedBy: " ") //separate string by white space to create an array of word
+    let reversed = words.map { String($0.reversed()) } //reverse each word using a higher order function map
+    return reversed.joined(separator: " ") //combine each word separated by white space
+}
 
 //: ### Challenge 16:
 //:

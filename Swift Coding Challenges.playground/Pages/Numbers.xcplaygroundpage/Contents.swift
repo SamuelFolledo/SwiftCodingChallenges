@@ -99,4 +99,22 @@ func challenge16() {
     }
 }
 challenge16()
+
+//slightly more efficient as we are not evaluating num % 3 twice
+func challenge16b() {
+    for i in 1...100 {
+        if i % 3 == 0 {
+            if i % 5 == 0 {
+                print("Fizz Buzz")
+            } else {
+                print("Fizz")
+            }
+        } else if i % 5 == 0 {
+            print("Buzz")
+        } else {
+            print(i)
+        }
+    }
+}
+
 //: [Next](@next)

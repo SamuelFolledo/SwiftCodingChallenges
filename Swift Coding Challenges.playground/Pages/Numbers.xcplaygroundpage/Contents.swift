@@ -69,5 +69,21 @@ func challenge52c(numbers: [Double]) -> Double {
 }
 
 
+//CHALLENGE 16: Fizz Buzz
+//Difficulty: Easy
+//Write a function that counts from 1 through 100, and prints “Fizz” if the counter is evenly divisible by 3, “Buzz” if it’s evenly divisible by 5, “Fizz Buzz” if it’s even divisible by three and five, or the counter number for all other cases.
+//Sample input and output
+//• 1 should print “1”
+//• 2 should print “2”
+//• 3 should print “Fizz”
+//• 4 should print “4”
+//• 5 should print “Buzz”
+//• 15 should print “Fizz Buzz”
+/*Hints
+ Hint #1: You’ll need to use modulus: %.
+ Hint #2: Check for the “Fizz Buzz” case first, because that’s most specific.
+ Hint #3: Remember to use the closed range operator to include the number 100 at the end.
+*/
+
 
 //: [Next](@next)

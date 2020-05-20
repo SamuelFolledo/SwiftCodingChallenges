@@ -139,7 +139,14 @@ Write a function that accepts positive minimum and maximum integers, and returns
  Hint #3: Also remember that lots of random number generators generate up to but excluding the maximum, so you should add 1 to make sure your tests pass.
  
  Hint #4: Take a look at ```arc4random_uniform().```
+        - ```arc4random_uniform().``` generates numbers from 0 up to an upper bound, it excludes the upper bound rather than including it, and it uses UInt32 rather than Int, so you need some typecasting.
+
 */
+
+
+func challenge17(min: Int, max: Int) -> Int {
+    return Int(arc4random_uniform(UInt32(max - min + 1))) + min
+}
 
 
 /*: ## Challenge 18: Recreate the pow() function

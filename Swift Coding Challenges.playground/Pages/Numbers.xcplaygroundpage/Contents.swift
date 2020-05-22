@@ -178,6 +178,11 @@ func challenge18a(number: Int, power: Int) -> Int {
     return returnValue
 }
 
+func challenge18b(number: Int, power: Int) -> Int {
+    guard number > 0, power > 0 else { return 0 }
+    if power == 1 { return number }
+    return number * challenge18b(number: number, power: power - 1)
+}
 
 /* ## Challenge 19: Swap two numbers
 

@@ -203,7 +203,23 @@ func challenge18b(number: Int, power: Int) -> Int {
 
 
 */
+// Solution 1
+var a = 2
+var b = 3
+a=a+b
+b=a-b
+a=a-b
 
+// Solution 2 XOR
+a=a^b
+b=a^b
+a=a^b
+
+// Solution 3 global swap function
+swap(&a, &b)
+
+// Solution 4 tuples
+(a, b) = (b, a)
 
 /* ## Challenge 20: Number is prime
 

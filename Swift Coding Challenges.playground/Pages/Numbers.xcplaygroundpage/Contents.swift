@@ -184,10 +184,26 @@ func challenge18b(number: Int, power: Int) -> Int {
     return number * challenge18b(number: number, power: power - 1)
 }
 
-/* ## Challenge 19: Swap two numbers
+/*: ## Challenge 19: Swap two numbers
+ Difficulty: Easy
+ Swap two positive variable integers,  a and b, without using a temporary variable.
+ Sample input and output
+ 
+ • Before running your code a should be 1 and b should be 2; afterwards, b should be 1
+ and a should be 2.
+ 
+ ### Hints
+ Hint #1: There are lots of ways to solve this, but probably the easiest to remember is using tuples.
+ 
+ Hint #2: Alternatively, try using the global Swift function swap().
+ 
+ Hint #3: If you’re feeling fancy, you can solve this problem with arithmetic.
+ 
+ Hint #4: If you’re feeling fancy and want to demonstrate your bit manipulation skills, you can also solve this problem using bitwise XOR.
 
 
 */
+
 
 /* ## Challenge 20: Number is prime
 

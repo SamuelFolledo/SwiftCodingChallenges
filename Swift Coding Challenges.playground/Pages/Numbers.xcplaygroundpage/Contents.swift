@@ -241,6 +241,17 @@ swap(&a, &b)
  Hint #3: There’s no point searching higher than the square root of your input number, rounding up.
 */
 
+func challenge20a(number: Int) -> Bool { //naive solution
+    guard number >= 2 else { return false } //make sure it is greater than 2
+    for i in 2 ..< number {
+        if number % i == 0 {
+            return false
+        }
+    }
+    return true
+}
+
+
 
 
 /* ## Challenge 21: Counting binary ones

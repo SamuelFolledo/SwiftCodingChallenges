@@ -221,10 +221,27 @@ swap(&a, &b)
 // Solution 4 tuples
 (a, b) = (b, a)
 
-/* ## Challenge 20: Number is prime
-
-
+/*: ## Challenge 20: Number is prime
+ 
+ Difficulty: Tricky
+ Write a function that accepts an integer as its parameter and returns true if the number is prime.
+ Tip: A number is considered prime if it is greater than one and has no positive divisors other than 1 and itself.
+ 
+ Sample input and output
+ • The number 11 should return true.
+ • The number 9 should return false.
+ • The number 16777259 should return true.
+ 
+ ### Hints
+ 
+ Hint #1: You should start with a brute force approach: loop through every number from 2 up to one less than the input number, and check whether the input number divides into it.
+ 
+ Hint #2: You can shrink the search space by searching up to a smaller number – what’s the highest it could be?
+ 
+ Hint #3: There’s no point searching higher than the square root of your input number, rounding up.
 */
+
+
 
 /* ## Challenge 21: Counting binary ones
 

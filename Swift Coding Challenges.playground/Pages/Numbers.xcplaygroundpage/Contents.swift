@@ -169,6 +169,14 @@ func challenge17(min: Int, max: Int) -> Int {
  Hint #3: Here’s another: you could use guard or precondition() to ensure both numbers are positive.
 
  */
+func challenge18a(number: Int, power: Int) -> Int {
+    guard number > 0, power > 0 else { return 0 }
+    var returnValue = number
+    for _ in 1..<power {
+        returnValue *= number
+    }
+    return returnValue
+}
 
 
 /* ## Challenge 19: Swap two numbers

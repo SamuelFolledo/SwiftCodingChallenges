@@ -150,47 +150,64 @@ func challenge17(min: Int, max: Int) -> Int {
 
 
 /*: ## Challenge 18: Recreate the pow() function
-
  
+ Difficulty: Easy
+ Create a function that accepts positive two integers, and raises the first to the power of the second.
+ Tip: If you name your function myPow() or challenge18(), you’ll be able to use the built-in pow() for your tests. The built-in pow() uses doubles, so you’ll need to typecast.
+ Sample input and output
+ 
+ • The inputs 4 and 3 should return 64, i.e. 4 multiplied by itself 3 times.
+ 
+ • The inputs 2 and 8 should return 256, i.e. 2 multiplied by itself 8 times.
+ 
+ ### Hints
+ 
+ Hint #1: You don’t need any hints to solve this one.
+ 
+ Hint #2: Oh, alright: here’s a hint: you can either use a loop or, if you’re feeling fancy, use a recursive function.
+ 
+ Hint #3: Here’s another: you could use guard or precondition() to ensure both numbers are positive.
+
  */
 
-/*: ## Challenge 19: Swap two numbers
+
+/* ## Challenge 19: Swap two numbers
 
 
 */
 
-/*: ## Challenge 20: Number is prime
+/* ## Challenge 20: Number is prime
 
 
 */
 
-/*: ## Challenge 21: Counting binary ones
+/* ## Challenge 21: Counting binary ones
 
 
 */
 
-/*: ## Challenge 22: Binary reverse
+/* ## Challenge 22: Binary reverse
 
 
 */
 
-/*: ## Challenge 23: Integer disguised as string
+/* ## Challenge 23: Integer disguised as string
 
 
 */
 
-/*: ## Challenge 24: Add numbers inside a string
+/* ## Challenge 24: Add numbers inside a string
 
 
 */
 
-/*: ## Challenge 25: Calculate a square root by hand
+/* ## Challenge 25: Calculate a square root by hand
 
 
 */
 
 
-/*: ## Challenge 26: Subtract without subtract
+/* ## Challenge 26: Subtract without subtract
  
 */
 

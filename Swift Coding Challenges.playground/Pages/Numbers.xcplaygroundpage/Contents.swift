@@ -251,13 +251,38 @@ func challenge20a(number: Int) -> Bool { //naive solution
     return true
 }
 
+func challenge20b(number: Int) -> Bool {
+    guard number >= 2 else { return false }
+    guard number != 2 else { return true }
+    let max = Int(ceil(sqrt(Double(number))))
+    for i in 2 ... max {
+        if number % i == 0 {
+            return false
+        }
+    }
+    return true
+}
 
+/*: ## Challenge 21: Counting binary ones
 
-
-/* ## Challenge 21: Counting binary ones
-
-
+ Difficulty: Tricky
+ 
+ Create a function that accepts any positive integer and returns the next highest and next lowest number that has the same number of ones in its binary representation. If either number is not possible, return nil for it.
+ ### Sample input and output
+ -  The number 12 is 1100 in binary, so it has two 1s. The next highest number with that
+ many 1s is 17, which is 10001. The next lowest is 10, which is 1010.
+ - The number 28 is 11100 in binary, so it has three 1s. The next highest number with that many 1s is 35, which is 100011. The next lowest is 26, which is 11010.
+ 
+ ### Hints
+ Hint #1: You can find the binary representation of an integer by converting it to a string – look for a “radix” initializer.
+ 
+ Hint #2: You should be using radix 2, which is binary. Hint #3: Your return value ought to be (nextHighest: Int?, nextLowest: Int?). Hint #4: You can count the 1s in a stringified number by using filter() on its letters property.
+ 
+ Hint #5: Don’t be afraid to duplicate code while you’re working – you need to search up and down for the same thing, so start with duplication then refactor.
+ 
+ Hint #6: You can’t create ranges where the end is higher than the start. Instead, create a forwards range then reverse it.
 */
+
 
 /* ## Challenge 22: Binary reverse
 

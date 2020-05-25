@@ -307,6 +307,29 @@ func challenge21(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
     return (nextHighest, nextLowest)
 }
 
+func challenge21b(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
+    func ones(in number: Int) -> Int {
+        let currentBinary = String(number, radix: 2)
+        return currentBinary.filter { (char: Character) -> Bool in char == "1" }.count
+    }
+    let targetOnes = ones(in: number)
+    var nextHighest: Int? = nil
+    var nextLowest: Int? = nil
+    for i in number + 1...Int.max {
+        if ones(in: i) == targetOnes {
+            nextHighest = i
+            break
+        }
+    }
+    for i in (0 ..< number).reversed() {
+        if ones(in: i) == targetOnes {
+            nextLowest = i
+            break
+        }
+    }
+    return (nextHighest, nextLowest)
+}
+
 
 
 /* ## Challenge 22: Binary reverse

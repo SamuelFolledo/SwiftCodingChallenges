@@ -357,7 +357,13 @@ func challenge21b(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
 
 */
 
-
+func challenge22(number: UInt) -> UInt {
+    let binary = String(number, radix: 2)
+    let paddingAmount = 8 - binary.count
+    let paddedBinary = String(repeating: "0", count: paddingAmount) + binary
+    let reversedBinary = String(paddedBinary.reversed())
+    return UInt(reversedBinary, radix: 2)!
+}
 
 
 /* ## Challenge 23: Integer disguised as string

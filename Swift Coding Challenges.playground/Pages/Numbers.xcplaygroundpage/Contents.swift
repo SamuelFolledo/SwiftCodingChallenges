@@ -332,7 +332,7 @@ func challenge21b(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
 
 
 
-/* ## Challenge 22: Binary reverse
+/*: ## Challenge 22: Binary reverse
  
  Difficulty: Tricky
  Create a function that accepts an unsigned 8-bit integer and returns its binary reverse, padded so that it holds precisely eight binary digits.
@@ -356,6 +356,9 @@ func challenge21b(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
 
 
 */
+
+
+
 
 /* ## Challenge 23: Integer disguised as string
 

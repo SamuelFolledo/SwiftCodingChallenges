@@ -358,11 +358,11 @@ func challenge21b(number: Int) -> (nextHighest: Int?, nextLowest: Int?) {
 */
 
 func challenge22(number: UInt) -> UInt {
-    let binary = String(number, radix: 2)
-    let paddingAmount = 8 - binary.count
-    let paddedBinary = String(repeating: "0", count: paddingAmount) + binary
-    let reversedBinary = String(paddedBinary.reversed())
-    return UInt(reversedBinary, radix: 2)!
+    let binary = String(number, radix: 2) //convert num to binary
+    let paddingAmount = 8 - binary.count //get missing 0s count
+    let paddedBinary = String(repeating: "0", count: paddingAmount) + binary //append the missing 0s to binary
+    let reversedBinary = String(paddedBinary.reversed()) //reverse it
+    return UInt(reversedBinary, radix: 2)! //convert binary back to number
 }
 
 

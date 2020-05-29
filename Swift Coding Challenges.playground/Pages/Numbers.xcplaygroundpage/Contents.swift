@@ -388,6 +388,20 @@ func challenge22(number: UInt) -> UInt {
 
 
 */
+func challenge23a(input: String) -> Bool {
+    return UInt(input) != nil //use UInt because the ceiling of Int is 9,223,372,036,854,775,807 so having an input bigger than that will fail
+    //However, all unsigned integers do is double the largest number you can address, so this would still fail if I add 0 at the end
+}
+print("Challenge 23a:", challenge23a(input: "9223372036854775807"))
+
+func challenge23b(input: String) -> Bool { //good solution
+    for letter in input {
+        if Int(String(letter)) == nil {
+            return false
+        }
+    }
+    return true
+}
 
 
 /* ## Challenge 24: Add numbers inside a string

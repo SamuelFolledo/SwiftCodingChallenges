@@ -366,10 +366,29 @@ func challenge22(number: UInt) -> UInt {
 }
 
 
-/* ## Challenge 23: Integer disguised as string
+/*: ## Challenge 23: Integer disguised as string
+ Difficulty: Tricky
+ Write a function that accepts a string and returns true if it contains only numbers, i.e. the digits 0 through 9.
+ ### Sample input and output
+ - The input “01010101” should return true.
+ - The input “123456789” should return true.
+ - The letter “9223372036854775808” should return true.
+ - The letter “1.01” should return false; “.” is not a number.
+ 
+ ### Hints
+ Hint #1: You can create integers from strings, and Swift will return nil if the conversion failed.
+ 
+ Hint #2: The number “9223372036854775808” is a precise choice, not just a random string of numbers.
+ 
+ Hint #3: Chances are Swift’s integer type will be 64-bit for you, and it’s signed, which means its maximum value is 2 to the power of 63, minus 1, i.e. 9223372036854775807 – that’s one less than the test case you’ve been given.
+ 
+ Hint #4: You should look into inverted character sets.
+ 
+ Hint #5: Some languages write numbers differently from English.
 
 
 */
+
 
 /* ## Challenge 24: Add numbers inside a string
 

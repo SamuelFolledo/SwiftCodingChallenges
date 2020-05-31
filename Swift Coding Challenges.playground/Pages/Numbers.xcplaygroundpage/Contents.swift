@@ -407,6 +407,10 @@ func challenge23c(input: String) -> Bool {
     return input.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
 }
 
+func challenge23d(input: String) -> Bool {
+    return input.rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789").inverted) == nil
+}
+
 
 
 /* ## Challenge 24: Add numbers inside a string

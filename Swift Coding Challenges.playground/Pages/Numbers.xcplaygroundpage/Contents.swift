@@ -403,6 +403,11 @@ func challenge23b(input: String) -> Bool { //good solution
     return true
 }
 
+func challenge23c(input: String) -> Bool {
+    return input.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+}
+
+
 
 /* ## Challenge 24: Add numbers inside a string
 

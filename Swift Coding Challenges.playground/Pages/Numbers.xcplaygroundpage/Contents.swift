@@ -431,6 +431,25 @@ func challenge23d(input: String) -> Bool {
  Hint #4: You could solve this using regular expressions, in which case I’d grade it as taxing rather than tricky.
 */
 
+func challenge24a(string: String) -> Int {
+    var currentNumber = ""
+    var sum = 0
+    for letter in string {
+        let strLetter = String(letter)
+        if Int(strLetter) != nil {
+            currentNumber += strLetter
+        } else {
+            sum += Int(currentNumber) ?? 0
+            currentNumber = "" //reset current number
+        }
+    }
+    sum += Int(currentNumber) ?? 0 //add last currentNumber
+    return sum
+}
+
+print("Challenge 24a: \(challenge24a(string: "aj22-jf99=1"))")
+
+
 /* ## Challenge 25: Calculate a square root by hand
 
 

@@ -413,9 +413,22 @@ func challenge23d(input: String) -> Bool {
 
 
 
-/* ## Challenge 24: Add numbers inside a string
-
-
+/*: ## Challenge 24: Add numbers inside a string
+ Difficulty: Tricky
+ Given a string that contains both letters and numbers, write a function that pulls out all the numbers then returns their sum.
+ ### Sample input and output
+ - The string “a1b2c3” should return 6 (1 + 2 + 3).
+ - The string “a10b20c30” should return 60 (10 + 20 + 30).
+ - The string “h8ers” should return “8”.
+ 
+ ### Hints
+ 
+ Hint #1: Creating an integer from a string returns Int? – nil if it was a number, or an Int otherwise.
+ 
+ Hint #2: Use the nil coalescing operator, ??, to strip out any unwanted optionality.
+ 
+ Hint #3: Don’t forget to catch trailing numbers, i.e. where the string ends with a number.
+ Hint #4: You could solve this using regular expressions, in which case I’d grade it as taxing rather than tricky.
 */
 
 /* ## Challenge 25: Calculate a square root by hand

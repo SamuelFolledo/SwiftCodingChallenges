@@ -449,6 +449,16 @@ func challenge24a(string: String) -> Int {
 
 print("Challenge 24a: \(challenge24a(string: "aj22-jf99=1"))")
 
+func challenge24b(string: String) -> Int {
+    let regex = try! NSRegularExpression(pattern: "(\\d+)", options: [])
+    let matches = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+    let allNumbers = matches.compactMap { //create an array of numbers from matches
+        Int((string as NSString).substring(with: $0.range))
+    }
+    return allNumbers.reduce(0, +)
+}
+
+print("Challenge 24b: \(challenge24b(string: "aj22-jf99=1"))")
 
 /* ## Challenge 25: Calculate a square root by hand
 

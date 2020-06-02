@@ -460,7 +460,30 @@ func challenge24b(string: String) -> Int {
 
 print("Challenge 24b: \(challenge24b(string: "aj22-jf99=1"))")
 
-/* ## Challenge 25: Calculate a square root by hand
+/*: ## Challenge 25: Calculate a square root by hand
+ Difficulty: Taxing
+ Write a function that returns the square root of a positive integer, rounded down to the nearest integer, without using sqrt().
+ ### Sample input and output
+ - The number 9 should return 3.
+ 
+ - The number 16777216 should return 4096.
+ 
+ - The number 16 should return 4.
+ 
+ - The number 15 should return 3.
+ 
+ ### Hints
+ Hint #1: You can brute force this using a loop count from 0 up to the input number.
+ 
+ Hint #2: A more efficient solution is using a binary search.
+ 
+ Hint #3: A rounded-down integer square root will never be more than half its square.
+ 
+ Hint #4: If you consider half your input number to be your upper bound, then calculate the mid-point between that and a lower bound that’s initially 0 (i.e., input number / 4), you can check whether that mid-point squared gives your input.
+ 
+ Hint #5: If the mid-point is too low, make it the new lower bound then repeat. If the mid-point is too high, make it the new higher bound then repeat.
+ 
+ Hint #6: Using this technique, you should be able to loop until you find the best answer.
 
 
 */

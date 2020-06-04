@@ -488,6 +488,16 @@ print("Challenge 24b: \(challenge24b(string: "aj22-jf99=1"))")
 
 */
 
+func challenge25a(input: Int) -> Int {
+    guard input != 1 else { return 1 }
+    for i in 0 ... input / 2 + 1 {
+        if i * i > input {
+            return i - 1
+        }
+    }
+    return 0
+}
+
 
 /* ## Challenge 26: Subtract without subtract
  

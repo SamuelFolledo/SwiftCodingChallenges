@@ -518,6 +518,9 @@ func challenge19b(input: Int) -> Int {
     return lowerBound
 }
 
+func challenge25c(input: Int) -> Int {
+    return Int(floor(pow(Double(input), 0.5)))
+}
 
 /* ## Challenge 26: Subtract without subtract
  

@@ -522,8 +522,19 @@ func challenge25c(input: Int) -> Int {
     return Int(floor(pow(Double(input), 0.5)))
 }
 
-/* ## Challenge 26: Subtract without subtract
+/*: ## Challenge 26: Subtract without subtract
+ Difficulty: Taxing
+ Create a function that subtracts one positive integer from another, without using -.
+ ### Sample input and output
+ - The code challenge26(subtract: 5, from: 9) should return 4.
+ - The code challenge26(subtract: 10, from: 30) should return 20.
+ ### Hints
+ Hint #1: In your code you can use any other operator, or any other number, positive or negative, just not the - operator.
  
+ Hint #2: Swift has a full set of bitwise operators – operators that manipulate the binary digits of a number.
+ 
+ Hint #3: You could try using bitwise NOT, which is ~.
+
 */
 
 

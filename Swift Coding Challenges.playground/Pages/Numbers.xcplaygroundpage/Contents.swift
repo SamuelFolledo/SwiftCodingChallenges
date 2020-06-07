@@ -536,6 +536,9 @@ func challenge25c(input: Int) -> Int {
  Hint #3: You could try using bitwise NOT, which is ~.
 
 */
+func challenge26a(subtract: Int, from: Int) -> Int {
+    return from + -subtract
+} //Technically, though, - in that instance is the unary minus operator, so it’s the same thing
 
 
 //: [Next](@next)

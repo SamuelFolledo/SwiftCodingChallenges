@@ -540,5 +540,9 @@ func challenge26a(subtract: Int, from: Int) -> Int {
     return from + -subtract
 } //Technically, though, - in that instance is the unary minus operator, so it’s the same thing
 
+func challenge26b(subtract: Int, from: Int) -> Int {
+    return from + -1 * subtract
+}
+
 
 //: [Next](@next)

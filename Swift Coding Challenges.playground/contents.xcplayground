@@ -2,12 +2,13 @@
 <playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
         <page name='Strings'/>
+        <page name='Numbers'/>
         <page name='Functional Programming'/>
         <page name='Linked List'/>
         <page name='Binary Tree'/>
-        <page name='Numbers'/>
         <page name='Collections'/>
         <page name='Day11-Animations'/>
         <page name='SPD1.41'/>
+        <page name='Files'/>
     </pages>
 </playground>

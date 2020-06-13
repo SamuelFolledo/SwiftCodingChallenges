@@ -544,5 +544,8 @@ func challenge26b(subtract: Int, from: Int) -> Int {
     return from + -1 * subtract
 }
 
+func challenge26c(subtract: Int, from: Int) -> Int {
+    return from + (~subtract + 1)
+}
 
 //: [Next](@next)

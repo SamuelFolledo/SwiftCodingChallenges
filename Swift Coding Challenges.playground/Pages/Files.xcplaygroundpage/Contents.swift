@@ -11,12 +11,12 @@ Write a function that accepts a filename on disk, then prints its last  N lines 
 import UIKit
 
 func challenge27(filename: String, lineCount: Int) {
-    guard let path = Bundle.main.path(forResource: filename, ofType: nil) else { return }
-    guard let input = try? String(contentsOfFile: path, encoding: .utf8) else { return }
-    var lines = input.components(separatedBy: "\n")
+    guard let path = Bundle.main.path(forResource: filename, ofType: nil) else { return } //get the path of the file
+    guard let input = try? String(contentsOfFile: path, encoding: .utf8) else { return } //get the contents of the file as multiline
+    var lines = input.components(separatedBy: "\n") //create an array of lines
     guard lines.count > 0 else { return }
-    lines.reverse()
-    for i in 0 ..< min(lines.count, lineCount) {
+    lines.reverse() //reverse the lines array
+    for i in 0 ..< min(lines.count, lineCount) { //loop until either it reach whichever is smaller between lines.count and lineCount passed
         print(lines[i])
     }
 }

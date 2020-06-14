@@ -43,6 +43,17 @@ func challenge27(filename: String, lineCount: Int) {
  - Hint #3: How you format the date and time for each message will be interesting, but don’t forget KISS: Keep It Simple, Stupid.
  - Hint #4: What should happen if you can’t write the log file? This wasn’t specified in the challenge description, so you get to use some initiative.
  */
-
+// 1. How you load the log file, or provide a default value if the log hasn’t been created yet
+// 2. How you format dates to include in each log message.
+// 3. How you write the updated log file back to disk, handling any errors that might occur.
+func challenge28(log message: String, to logFile: String) {
+    var existingLog = (try? String(contentsOfFile: logFile)) ?? "" //existingLog will either be an empty string or the contents read from the log file.
+    existingLog.append("\(Date()): \(message)\n") //“Year-Month-Day Hour:Minute:Second
+    do { // writing data to disk is a throwing function, so you need to decide what to do with any errors
+        try existingLog.write(toFile: logFile, atomically: true, encoding: .utf8)
+    } catch let error {
+        print("Failed to write to log: \(error.localizedDescription)")
+    }
+}
 
 //: [Next](@next)

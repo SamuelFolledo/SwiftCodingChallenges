@@ -74,5 +74,9 @@ yourUserName/Documents on macOS, and /path/to/container/Documents on iOS.
  
 - Hint #3: The user has only one documents directory.
 */
+func challenge29() -> URL {
+    let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+    return paths[0]
+}
 
 //: [Next](@next)

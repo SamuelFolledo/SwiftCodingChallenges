@@ -79,4 +79,29 @@ func challenge29() -> URL {
     return paths[0]
 }
 
+/*:
+ ## Challenge 30: New JPEGs
+ 
+ Difficulty: Easy
+ Write a function that accepts a path to a directory and returns an array of all JPEGs that have been created in the last 48 hours.
+ 
+ **Tip #1**: For the purpose of this task, just looking for “.jpg” and “.jpeg” file extensions is sufficient.
+ **Tip #2**: For this challenge, assume time is regular and constant, i.e. the user has not changed their timezone or moved into or out from daylight savings.
+ **Tip #3**: Use the terminal command touch -t YYYYMMDDHHMM somefile.jpg to adjust the creation time of a file, e.g. touch -t 201612250101.
+ 
+ ### Sample input and output
+ 
+ - If your directory contains three JPEGs older than 48 hours and three newer, your function should return the names of the three newer.
+ 
+ ### Hints
+ 
+ - Hint #1: Use the ```contentsOfDirectory()``` method of ```FileManager``` to pull out the list of files in your target directory.
+ 
+ - Hint #2: You can compare two dates directly using ```>```.
+ 
+ - Hint #3: You can read the attributes of a file using the ```attributesOfItem()``` method on ```FileManager```, and you’ll want to read the ```FileAttributeKey.creationDate``` from that dictionary.
+
+ */
+
+
 //: [Next](@next)

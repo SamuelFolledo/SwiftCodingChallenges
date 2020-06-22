@@ -112,6 +112,41 @@ func challenge29() -> URL {
  
  3. Filtering by creation date, ensuring that only newer JPEGs are included.
  */
+func challenge30(in directory: String) -> [String] {
+    let fm = FileManager.default
+    let directoryURL = URL(fileURLWithPath: directory)
+    guard let files = try? fm.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil) else { return [] }
+    var jpegs = [String]()
+    for file in files {
+        if file.pathExtension == "jpg" || file.pathExtension == "jpeg" {          guard let attributes = try? fm.attributesOfItem(atPath: file.path) else { continue }
+            guard let creationDate = attributes[.creationDate] as? Date else { continue }
+            if creationDate > Date(timeIntervalSinceNow: -60 * 60 * 48) {             jpegs.append(file.lastPathComponent)
+            }
+        }
+    }
+    return jpegs
+}
 
+/*:
+ ## Challenge 31: Copy recursively
+ 
+ Difficulty: Easy
+ 
+ Write a function that accepts two paths: the first should point to a directory to copy, and the second should be where the directory should be copied to. Return true if the directory and all its contents were copied successfully; false if the copy failed, or the user specified something other than a directory.
+ ### Sample input and output
+ 
+ - If your directory exists and is readable, the destination is writeable, and the copy
+ succeeded, your function should return true.
+ 
+ - Under all other circumstances you should return false: if the directory does not exist or
+ was not readable, if the destination was not writeable, if a file was specified rather than
+ a directory, or if the copy failed for any other reason.
+ 
+ ### Hints
+ - Hint #1: FileManager has a dedicated copyItem() method that is perfectly capable of recursively copying directories.
+ - Hint #2: To comply fully with the challenge, you must ensure the user does not specify a file to copy – this should accept only directories.
+ - Hint #3: You should try the fileExists() method. It has a second parameter, specified as inout, that returns whether the requested item is a directory.
+ -Hint #4: Never used ObjCBool before? Lucky you. Create your variable like this: var isDirectory: ObjCBool = false. Now call fileExists() then use its boolValue property to read the boolean value.
 
+ */
 //: [Next](@next)

@@ -116,11 +116,9 @@ func challenge30(in directory: String) -> [String] {
     let fm = FileManager.default
     let directoryURL = URL(fileURLWithPath: directory)
     guard let files = try? fm.contentsOfDirectory(at: directoryURL, includingPropertiesForKeys: nil) else { return [] }
-    print("Files \(files)")
     var jpegs = [String]()
     for file in files {
-        print("FILE \(file.absoluteString) \(file)")
-        if file.pathExtension == "jpg" || file.pathExtension == "jpeg" {          guard let attributes = try? fm.attributesOfItem(atPath: file.path) else { continue }
+        if file.pathExtension == "png" || file.pathExtension == "jpeg" {          guard let attributes = try? fm.attributesOfItem(atPath: file.path) else { continue }
             guard let creationDate = attributes[.creationDate] as? Date else { continue }
             if creationDate > Date(timeIntervalSinceNow: -60 * 60 * 48) {             jpegs.append(file.lastPathComponent)
             }
@@ -151,4 +149,22 @@ func challenge30(in directory: String) -> [String] {
  -Hint #4: Never used ObjCBool before? Lucky you. Create your variable like this: var isDirectory: ObjCBool = false. Now call fileExists() then use its boolValue property to read the boolean value.
 
  */
+
+func challenge31(source: String, destination: String) -> Bool {
+    let fm = FileManager.default
+    var isDirectory: ObjCBool = false
+    guard fm.fileExists(atPath: source, isDirectory: &isDirectory) || isDirectory.boolValue == false else { return false }
+    let sourceURL = URL(fileURLWithPath: source)
+    let destinationURL = URL(fileURLWithPath: destination)
+    do {
+        try fm.copyItem(at: sourceURL, to: destinationURL)
+    } catch {
+        print("Copy failed: \(error.localizedDescription)")
+        return false
+    }
+    return true
+}
+
+
+
 //: [Next](@next)

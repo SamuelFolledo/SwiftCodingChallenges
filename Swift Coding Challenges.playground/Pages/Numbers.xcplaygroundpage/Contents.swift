@@ -47,11 +47,9 @@ extension Double: Numeric {}
 
 func sumArray<T: Numeric>(numbers: [T]) -> T { //Third, defining a function that accepts an array of numbers that conform to Numeric and returns a single value. //<T: Numeric> is required whenever you use generics as parameter
     var total = T()
-    
     for num in numbers {
         total = total + num
     }
-    
     return total
 }
 

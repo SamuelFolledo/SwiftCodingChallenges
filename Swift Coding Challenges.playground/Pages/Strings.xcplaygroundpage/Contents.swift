@@ -258,7 +258,7 @@ func challenge13a(input: String) -> String {
 func challenge13b(input: String) -> String {
     var returnValue = ""
     var letterCounter = 0
-    var letterArray = Array(input)
+    let letterArray = Array(input)
     for i in 0 ..< letterArray.count {
         letterCounter += 1
         if i + 1 == letterArray.count || letterArray[i] != letterArray[i + 1] {
@@ -271,28 +271,33 @@ func challenge13b(input: String) -> String {
 
 //: ### Challenge 14:
 //:
-//Challenge 14: String permutations
-//Write a function that prints all possible permutations of a given input string.
-//Hints
-//Hint #1: Your function will need to call itself.
-//Hint #2: The number of lines printed should be the factorial of the length of your string, e.g. “wombat” has six characters, so will have 6! permutations: 6 x 5 x 4 x 3 x 2 x 1, or 720.
-//Hint #3: You’ll find it easiest to convert the string to a character array for easier indexing.
-//Hint #4: Each time your function is called, it should loop through all letters in the string so that all combinations are generated. Hint #5: You can slice arrays using strArray[0...3]. Hint #6: You can convert string array slices into strings just by using an initializer: String(strArray[0...3]).
-
+/*
+## Challenge 14: String permutations
+Write a function that prints all possible permutations of a given input string.
+Hints
+Hint #1: Your function will need to call itself.
+Hint #2: The number of lines printed should be the factorial of the length of your string, e.g. “wombat” has six characters, so will have 6! permutations: 6 x 5 x 4 x 3 x 2 x 1, or 720.
+Hint #3: You’ll find it easiest to convert the string to a character array for easier indexing.
+Hint #4: Each time your function is called, it should loop through all letters in the string so that all combinations are generated.
+Hint #5: You can slice arrays using strArray[0...3].
+Hint #6: You can convert string array slices into strings just by using an initializer: String(strArray[0...3]).
+*/
 func challenge14(string: String, current: String = "") {
     let length = string.count
     let strArray = Array(string)
     if (length == 0) {       // there's nothing left to re-arrange; print the result
+        print("******")
         print("If", current)
         print("******")
     } else {
-        print("Else", current)
+//        print("Else", current)
         // loop through every character
         for i in 0 ..< length {
             // get the letters before me
             let left = String(strArray[0 ..< i])
             // get the letters after me
             let right = String(strArray[i+1 ..< length])
+            print("L=\(left)\tR=\(right)\t\tCurr=\(current)\tS=\(String(strArray[i]))")
             // put those two together and carry on
             challenge14(string: left + right, current: current + String(strArray[i]))
         }

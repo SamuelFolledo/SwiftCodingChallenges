@@ -75,7 +75,9 @@ func challenge6b(string: String) -> String {
 
 func challenge6c(string: String) -> String {
     var used = [Character: Bool]()
-    let result = string.filter {       used.updateValue(true, forKey: $0) == nil    }
+    let result = string.filter {
+        used.updateValue(true, forKey: $0) == nil
+    }
     return String(result)
 }
 

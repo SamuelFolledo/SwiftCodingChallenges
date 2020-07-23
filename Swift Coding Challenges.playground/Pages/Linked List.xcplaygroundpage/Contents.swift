@@ -177,17 +177,18 @@ public struct TLinkedList<T> {
     ///Inserts a value in a specific place in the list.
     ///- First find the node
     ///- Then insert the new node
-    public func insertTNode(at index: Int) -> TNode<T>? {
-        var currentNode = head
-        var currentIndex = 0
-        
-        while currentNode != nil && currentIndex < index {
-            currentNode = currentNode!.next
-            currentIndex += 1
-        }
-        return currentNode
-    }
+//    public func insertTNode(at index: Int) -> TNode<T>? {
+//        var currentNode = head
+//        var currentIndex = 0
+//
+//        while currentNode != nil && currentIndex < index {
+//            currentNode = currentNode!.next
+//            currentIndex += 1
+//        }
+//        return currentNode
+//    }
     
+    ///insert a value
     @discardableResult public mutating func insert(_ value: T, after node: TNode<T>) -> TNode<T> {
         guard tail !== node else {
             append(value)

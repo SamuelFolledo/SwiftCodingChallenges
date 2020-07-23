@@ -59,10 +59,10 @@ class Node<T> {
 }
 
 class LinkedList<T> {
-    var start: Node<T>?
+    var head: Node<T>?
     
     func printNodes() {
-        var currentNode = start
+        var currentNode = head
         while let node = currentNode {
             print(node.value, terminator: " ")
             currentNode = node.next
@@ -75,10 +75,10 @@ var previousNode: Node<Character>? = nil
 
 for letter in "abcdefghijklmnopqrstuvwxyz" {
     let node = Node(value: letter)
-    if let predecessor = previousNode {
+    if let predecessor = previousNode { //if there's a node, then point it to this newly created node
         predecessor.next = node
-    } else {
-        list.start = node
+    } else { //assign it as list's head
+        list.head = node
     }
     previousNode = node
 }

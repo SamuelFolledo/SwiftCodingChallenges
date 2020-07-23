@@ -64,6 +64,16 @@ class Node<T> {
 class LinkedList<T> {
     var head: Node<T>?
     
+    var centerNode: Node<T>? {
+        var slow = head
+        var fast = head
+        while fast != nil && fast?.next != nil { //if fast's next pointer is nil, then the slow is the center node
+            slow = slow?.next
+            fast = fast?.next?.next
+        }
+        return slow
+    }
+    
     func printNodes() {
         var currentNode = head
         while let node = currentNode {
@@ -104,3 +114,4 @@ Extend your linked list class with a new method that returns the node at the mid
 3. Once you pull out two items at the same time, you can make them move at different speeds through the list.
 4. If you move pointer A through the list one item at a time, and pointer B through the list two items at a time, by the time pointer B reaches the end where will pointer A be?
 */
+//Solution... check centerNode in LinkedList

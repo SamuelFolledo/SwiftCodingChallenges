@@ -82,28 +82,63 @@ class LinkedList<T> {
         }
     }
     
-    func reversed() -> LinkedList<T> {
-        // create our copy for the return value
+    //challenge 51a
+//    func reversed() -> LinkedList<T> {
+//        // create our copy for the return value
+//        let copy = LinkedList<T>()
+//        // if we have nodes to copy…
+//        if let startNode = head {
+//            // copy the original start node
+//            var previousCopyNode = Node(value: startNode.value)
+//            // now start copying from the next node
+//            var currentNode = head?.next
+//            while let node = currentNode {
+//                // create a copy of this node
+//                let copyNode = Node(value: node.value)
+//                // make it point to the node we created previously
+//                copyNode.next = previousCopyNode
+//                // then make it the previous node, so we can move forward
+//                previousCopyNode = copyNode
+//                currentNode = currentNode?.next
+//            }
+//            // we're at the end of the list, which is our new start
+//            copy.head = previousCopyNode
+//        }
+//        return copy
+//    }
+    
+    //challenge 51b smarter alternative
+    func copy() -> LinkedList<T> {
         let copy = LinkedList<T>()
-        // if we have nodes to copy…
         if let startNode = head {
-            // copy the original start node
-            var previousCopyNode = Node(value: startNode.value)
-            // now start copying from the next node
+            copy.head = Node(value: startNode.value)
+            var previousCopyNode = copy.head
             var currentNode = head?.next
             while let node = currentNode {
-                // create a copy of this node
                 let copyNode = Node(value: node.value)
-                // make it point to the node we created previously
-                copyNode.next = previousCopyNode
-                // then make it the previous node, so we can move forward
+                previousCopyNode?.next = copyNode
                 previousCopyNode = copyNode
                 currentNode = currentNode?.next
-                
             }
-            // we're at the end of the list, which is our new start
-            copy.head = previousCopyNode
         }
+        return copy
+    }
+    
+    func reverse() {
+        var currentNode = head
+        var newNext: Node<T>? = nil
+        while let node = currentNode {
+            let next = node.next
+            node.next = newNext
+            newNext = node
+            currentNode = next
+        }
+        head = newNext
+    }
+    
+    func reversed() -> LinkedList<T> {
+        let copy = self.copy()
+        copy.reverse()
         return copy
     }
 }

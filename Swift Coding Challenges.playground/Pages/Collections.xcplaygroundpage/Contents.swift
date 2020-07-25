@@ -115,3 +115,22 @@ Extend your linked list class with a new method that returns the node at the mid
 4. If you move pointer A through the list one item at a time, and pointer B through the list two items at a time, by the time pointer B reaches the end where will pointer A be?
 */
 //Solution... check centerNode in LinkedList
+
+/*:
+ ## Challenge 51: Reversing linked lists
+ 
+ Expand your code from challenge 43 so that it has a reversed() method that returns a copy of itself in reverse.
+ 
+ Tip: Don’t cheat! It is not a solution to this problem just to reverse the alphabet letters before you create your linked list. Create the linked list alphabetically, then write code to reverse it.
+ 
+ #### Sample input and output
+ 
+ - When you call reversed() on your alphabet list, running printNodes() on the
+ return value should print the English alphabet printed to the screen in reverse, i.e. “z y x … d b c a”.
+ 
+ #### Hints
+ 1. Most of the work is just producing a copy of the linked list.
+ 2. Having to work on a copy makes this a little more interesting.
+ 3. You could create two methods: one for copying, and one for reversing a copy in place. If you do this, please think carefully about Swift’s naming conventions! Hint #4: You need to create a newNext variable that starts as nil. Then traverse the full list, pull out its next value, then change the current node’s next property to be newNext. You can then continue on to whatever node was in next, and repeat until the end of the list is reached.
+
+ */

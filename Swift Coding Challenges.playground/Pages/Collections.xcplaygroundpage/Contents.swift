@@ -111,14 +111,14 @@ class LinkedList<T> {
     func copy() -> LinkedList<T> {
         let copy = LinkedList<T>()
         if let startNode = head {
-            copy.head = Node(value: startNode.value)
-            var previousCopyNode = copy.head
+            copy.head = Node(value: startNode.value) //if we have a head, assign it as copy's head
+            var previousCopyNode = copy.head //initialize with copy's head
             var currentNode = head?.next
-            while let node = currentNode {
-                let copyNode = Node(value: node.value)
-                previousCopyNode?.next = copyNode
-                previousCopyNode = copyNode
-                currentNode = currentNode?.next
+            while let node = currentNode { //loop through each node after head
+                let copyNode = Node(value: node.value) //make a copy node from current node
+                previousCopyNode?.next = copyNode //point currentCopy node to new copyNode
+                previousCopyNode = copyNode //update currentCopyNode
+                currentNode = currentNode?.next //go to next node
             }
         }
         return copy
@@ -127,18 +127,18 @@ class LinkedList<T> {
     func reverse() {
         var currentNode = head
         var newNext: Node<T>? = nil
-        while let node = currentNode {
-            let next = node.next
-            node.next = newNext
-            newNext = node
-            currentNode = next
+        while let node = currentNode { //loop til the end of list
+            let next = node.next //create a copy of the node's next
+            node.next = newNext //make the node's next the newNext (nil at first)
+            newNext = node //newNext will now be the current node
+            currentNode = next //make currentNode the currentNode's original next
         }
         head = newNext
     }
     
     func reversed() -> LinkedList<T> {
         let copy = self.copy()
-        copy.reverse()
+        copy.reverse() //from the copy created, reverse it
         return copy
     }
 }
@@ -194,3 +194,5 @@ Extend your linked list class with a new method that returns the node at the mid
  3. You could create two methods: one for copying, and one for reversing a copy in place. If you do this, please think carefully about Swift’s naming conventions! Hint #4: You need to create a newNext variable that starts as nil. Then traverse the full list, pull out its next value, then change the current node’s next property to be newNext. You can then continue on to whatever node was in next, and repeat until the end of the list is reached.
 
  */
+print("\n")
+list.reversed().printNodes()

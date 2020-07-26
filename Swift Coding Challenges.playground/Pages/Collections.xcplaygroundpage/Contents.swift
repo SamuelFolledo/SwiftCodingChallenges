@@ -175,6 +175,7 @@ Extend your linked list class with a new method that returns the node at the mid
 4. If you move pointer A through the list one item at a time, and pointer B through the list two items at a time, by the time pointer B reaches the end where will pointer A be?
 */
 //Solution... check centerNode in LinkedList
+print("\nCenter Node = \(list.centerNode!.value)")
 
 /*:
  ## Challenge 51: Reversing linked lists

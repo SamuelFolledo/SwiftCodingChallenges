@@ -181,5 +181,22 @@ func challenge31(source: String, destination: String) -> Bool {
  Create different files on your desktop for each of your pieces of sample input, then pass the paths to those files into your function.
  */
 
+/*
+ ### Hints
+ - Hint #1: Being able to ask questions about definitions – “what is a word?” is an important skill in white boarding tests.
+ - Hint #2: I would suggest that splitting by any non-alphabetic character is a safe choice for defining words to begin with, but watch out for that last test case.
+ - Hint #3: There’s a built-in character set for letters, which includes uppercase and lowercase letters.
+ - Hint #4: All character sets have an inverted property that gives you the opposite. For letters that gives you all non-letters.
+ - Hint #5: Once you have a set of all non-letters, you can remove ' and split your string on that. Hint #6: The NSCountedSet class can count words in an array extremely efficiently.
+ */
+
+func challenge32(filename: String, count: String) -> Int {
+    guard let inputString = try? String(contentsOfFile: filename) else { return 0 }
+    var nonletters = CharacterSet.letters.inverted
+    nonletters.remove("'")
+    let allWords = inputString.components(separatedBy: nonletters)
+    let wordsSet = NSCountedSet(array: allWords)
+    return wordsSet.count(for: count)
+}
 
 //: [Next](@next)

@@ -165,6 +165,21 @@ func challenge31(source: String, destination: String) -> Bool {
     return true
 }
 
+/*:
+ ## Challenge 32: Word frequency
+ Difficulty: Tricky
+ 
+ Write a function that accepts a filename on disk, loads it into a string, then returns the frequency of a word in that string, taking letter case into account. How you define “word” is worth considering carefully.
+ 
+ ### Sample input and output
+ - A file containing “Hello, world!” should return 1 for “Hello”
+ - A file containing “Hello, world!” should return 0 for “Hello,” – note the comma at the end.
+ - A file containing “The rain in Spain falls mainly on the plain” should return 1 for Spain, and 1 for “in”; the “in” inside rain, Spain, mainly, and plain does not count because it’s not a word by itself.
+ - A file containing “I’m a great coder” should return 1 for “I’m”.
+ 
+ ### Tip:
+ Create different files on your desktop for each of your pieces of sample input, then pass the paths to those files into your function.
+ */
 
 
 //: [Next](@next)

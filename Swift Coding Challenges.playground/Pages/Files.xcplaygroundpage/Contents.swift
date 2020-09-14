@@ -191,12 +191,12 @@ func challenge31(source: String, destination: String) -> Bool {
  */
 
 func challenge32(filename: String, count: String) -> Int {
-    guard let inputString = try? String(contentsOfFile: filename) else { return 0 }
-    var nonletters = CharacterSet.letters.inverted
-    nonletters.remove("'")
-    let allWords = inputString.components(separatedBy: nonletters)
-    let wordsSet = NSCountedSet(array: allWords)
-    return wordsSet.count(for: count)
+    guard let inputString = try? String(contentsOfFile: filename) else { return 0 } //convert contents of file to string
+    var nonletters = CharacterSet.letters.inverted //array of all non characters
+    nonletters.remove("'") //remove '
+    let allWords = inputString.components(separatedBy: nonletters) //create an array of words separated by non letter characters
+    let wordsSet = NSCountedSet(array: allWords) //a specialized set (no duplicates) that stores each item only once, so you get the performance of regular sets, but acts like items are stored more than once 
+    return wordsSet.count(for: count) //with NSCountedSet you can ask “how many times does this item appear?” like this
 }
 
 //: [Next](@next)

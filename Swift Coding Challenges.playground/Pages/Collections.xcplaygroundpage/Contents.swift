@@ -25,6 +25,7 @@ extension Collection {
         // loop over every element
         for item in self {
             // stringify this integer
+            guard let item = item as? Int else { return total }
             let str = String(item)
             // loop over letter in the string
             for letter in str {
@@ -35,16 +36,18 @@ extension Collection {
         }
         return total
     }
+    
     func challenge37b(count: Character) -> Int {
         return self.reduce(0) {
-            $0 + String($1).filter { (char: Character) -> Bool in
+            guard let currentNumber = $1 as? Int else { return 0 }
+            return $0 + String(currentNumber).filter { (char: Character) -> Bool in
                 char == count
             }.count
         }
     }
 }
 
-[5, 15, 55, 515].challenge37a(count: "5")
+[5, 15, 55, 515].challenge37b(count: "5")
 
 
 /*:

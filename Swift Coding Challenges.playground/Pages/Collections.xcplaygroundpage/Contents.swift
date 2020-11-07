@@ -37,6 +37,8 @@ extension Collection {
         return total
     }
     
+    //clearer but will more than likely perform slower
+    //reduce() to whittle down the array of integers into a single number, then use filter() on each item to pick out characters that match the input digit
     func challenge37b(count: Character) -> Int {
         return self.reduce(0) {
             guard let currentNumber = $1 as? Int else { return 0 }

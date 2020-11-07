@@ -53,6 +53,28 @@ extension Collection {
 
 
 /*:
+ ## Challenge 38: Find N smallest
+ Difficulty: Easy
+ 
+ Write an extension for all collections that returns the  N smallest elements as an array, sorted smallest first, where N is an integer parameter.
+ ### Sample input and output
+ - The code `[1, 2, 3, 4].challenge38(count: 3)` should return [1, 2, 3].
+ - The code `["q", "f", "k"].challenge38(count: 10)` should return [“f”, “k”, “q”].
+ - The code `[256, 16].challenge38(count: 3)` should return [16, 256].
+ - The code `[String]().challenge38(count: 3)` should return an empty
+ array.
+ ### Hints
+ - Hint #1: You’ll need to extend the `Collection` type with a constraint.
+ - Hint #2: Finding the smallest of any value requires using the `<` operator, which is guaranteed to exist when something conforms to `Comparable`.
+ - Hint #3: The collection might be contain fewer than *N* items.
+ - Hint #4: The solution is made more interesting by the requirement to return a variable number of results. Hint #5: If you want to avoid complexity, use `sorted()`.
+
+ */
+
+
+
+
+/*:
  ## Challenge 43: Linked lists
  Difficulty: Easy
  Create a linked list of lowercase English alphabet letters, along with a method that traverses all nodes and prints their letters on a single line separated by spaces.

@@ -71,7 +71,12 @@ extension Collection {
 
  */
 
-
+extension Collection where Iterator.Element: Comparable {
+    func challenge38(count: Int) -> [Iterator.Element] {
+        let sorted = self.sorted()
+        return Array(sorted.prefix(count))
+    }
+}
 
 
 /*:

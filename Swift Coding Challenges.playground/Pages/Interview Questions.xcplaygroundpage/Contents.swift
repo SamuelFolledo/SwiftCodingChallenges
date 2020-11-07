@@ -144,4 +144,8 @@ let parentChildPairs2 = [
     [10, 5], [3, 4], [5, 6], [5, 7], [7, 8]
 ]
 
+var index = 0
+while index < parentChildPairs.count {
+    print(parentChildPairs[parentChildPairs.count - index])
+}
 //: [Next](@next)

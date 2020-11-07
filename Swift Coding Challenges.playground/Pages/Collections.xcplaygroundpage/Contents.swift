@@ -2,6 +2,23 @@
 
 import Foundation
 
+/*:
+ ## Challenge 37: Count the numbers
+ 
+ Difficulty: Easy
+ 
+ Write an extension for collections of integers that returns the number of times a specific digit appears in any of its numbers.
+ ### Sample input and output
+ - The code [5, 15, 55, 515].challenge37(count: "5") should return 6.
+ - The code [5, 15, 55, 515].challenge37(count: "1") should return 2.
+ - The code [55555].challenge37(count: "5") should return 5.
+ - The code [55555].challenge37(count: "1") should return 0.
+ ### Hints
+ - Hint #1: You’ll need to extend the Collection type with a specific constraint rather than a protocol constraint.
+ - Hint #2: If you convert each number to a string, you can loop over its characters.
+ - Hint #3: If you were functionally inclined, you could solve this challenge using `reduce()` and `filter()`.
+ */
+
 extension Collection {
     func challenge37a(count: Character) -> Int {
         var total = 0

@@ -73,8 +73,8 @@ extension Collection {
 
 extension Collection where Iterator.Element: Comparable {
     func challenge38(count: Int) -> [Iterator.Element] {
-        let sorted = self.sorted()
-        return Array(sorted.prefix(count))
+        let sorted = self.sorted() //sort, ascending by default
+        return Array(sorted.prefix(count)) //get the first count amount of elements from the sorted array
     }
 }
 

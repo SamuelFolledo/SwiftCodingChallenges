@@ -92,6 +92,11 @@ extension Collection where Iterator.Element: Comparable {
  - Hint #2: You should use the built-in sorted() method.
  - Hint #3: You can provide a custom closure to sorted() to affect how it works.
  */
+extension Collection where Iterator.Element == String {
+    func challenge39() -> [String] {
+        return self.sorted { $0.count > $1.count }
+    }
+}
 
 
 /*:

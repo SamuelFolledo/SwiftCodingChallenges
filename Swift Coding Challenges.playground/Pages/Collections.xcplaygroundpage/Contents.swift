@@ -142,6 +142,13 @@ func challenge40b(input: [Int]) -> [Int] {
     return missingNumbers
 }
 
+func challenge40c(input: [Int]) -> [Int] {
+    let inputSet = Set(input)
+    let testSet = Set(1...100)
+    return Array(testSet.subtracting(inputSet)).sorted()
+}
+
+
 /*:
  ## Challenge 43: Linked lists
  Difficulty: Easy

@@ -117,7 +117,7 @@ extension Collection where Iterator.Element == String {
  - Hint #2: You should try using a `Set`, which has a significantly faster `contains()` method.
  - Hint #3: You can compute the different between two sets using `symmetricDifference()`.
  */
-
+//slow solution because array.contains() is O(n)
 func challenge40a(input: [Int]) -> [Int] {
     let correctArray = Array(1...100)
     var missingNumbers = [Int]()
@@ -129,6 +129,7 @@ func challenge40a(input: [Int]) -> [Int] {
     return missingNumbers
 }
 
+//faster becase set.contains() is O(1)
 func challenge40b(input: [Int]) -> [Int] {
     let correctArray = Array(1...100)
     let inputSet = Set(input)

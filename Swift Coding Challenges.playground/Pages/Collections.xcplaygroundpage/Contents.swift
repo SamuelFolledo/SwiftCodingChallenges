@@ -78,7 +78,20 @@ extension Collection where Iterator.Element: Comparable {
     }
 }
 
-//Challenge 44:
+/*:
+ ## Challenge 39: Sort a string array by length
+ Difficulty: Easy
+ 
+ Extend collections with a function that returns an array of strings sorted by their lengths, longest first.
+ ### Sample input and output
+ - The code ["a", "abc", "ab"].challenge39() should return ["abc","ab", "a"].
+ - The code ["paul", "taylor", "adele"].challenge39() should return ["taylor", "adele", "paul"].
+ - The code [String]().challenge39() should return [].
+ ### Hints
+ - Hint #1: You’ll need to extend the Collection type with a specific constraint rather than a protocol constraint.
+ - Hint #2: You should use the built-in sorted() method.
+ - Hint #3: You can provide a custom closure to sorted() to affect how it works.
+ */
 
 
 /*:

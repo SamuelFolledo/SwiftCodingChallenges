@@ -129,6 +129,17 @@ func challenge40a(input: [Int]) -> [Int] {
     return missingNumbers
 }
 
+func challenge40b(input: [Int]) -> [Int] {
+    let correctArray = Array(1...100)
+    let inputSet = Set(input)
+    var missingNumbers = [Int]()
+    for number in correctArray {
+        if !inputSet.contains(number) {
+            missingNumbers.append(number)
+        }
+    }
+    return missingNumbers
+}
 
 /*:
  ## Challenge 43: Linked lists

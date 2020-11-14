@@ -142,6 +142,7 @@ func challenge40b(input: [Int]) -> [Int] {
     return missingNumbers
 }
 
+//50% slower than solution above because it is turning the set into an array and sorting it
 func challenge40c(input: [Int]) -> [Int] {
     let inputSet = Set(input)
     let testSet = Set(1...100)

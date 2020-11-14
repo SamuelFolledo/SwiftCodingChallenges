@@ -118,6 +118,17 @@ extension Collection where Iterator.Element == String {
  - Hint #3: You can compute the different between two sets using `symmetricDifference()`.
  */
 
+func challenge40a(input: [Int]) -> [Int] {
+    let correctArray = Array(1...100)
+    var missingNumbers = [Int]()
+    for number in correctArray {
+        if !input.contains(number) {
+            missingNumbers.append(number)
+        }
+    }
+    return missingNumbers
+}
+
 
 /*:
  ## Challenge 43: Linked lists

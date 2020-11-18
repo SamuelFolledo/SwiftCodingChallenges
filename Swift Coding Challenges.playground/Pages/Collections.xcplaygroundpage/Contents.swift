@@ -171,6 +171,11 @@ func challenge40c(input: [Int]) -> [Int] {
  - Hint #5: Make life easy for yourself: sort the collection first.
  */
 
+/*
+ ## Challenge 42: 
+ 
+ */
+
 extension Collection where Iterator.Element == Int {
     func challenge41() -> Double? {
         guard count != 0 else { return nil }

@@ -204,23 +204,6 @@ extension Collection where Iterator.Element == Int {
 
 
 
-
-extension Collection where Iterator.Element == Int {
-    func challenge41() -> Double? {
-        guard count != 0 else { return nil }
-        // sort the items so we can find the center point
-        let sorted = self.sorted()
-        let middle = sorted.count / 2
-        if sorted.count % 2 == 0 {
-            // return mean average of two center items
-            return Double(sorted[middle] + sorted[middle - 1]) / 2
-        } else {
-            // return the single center item
-            return Double(sorted[middle])
-        }
-    }
-}
-
 /*:
  ## Challenge 43: Linked lists
  Difficulty: Easy

@@ -149,7 +149,7 @@ func challenge40c(input: [Int]) -> [Int] {
     return Array(testSet.subtracting(inputSet)).sorted()
 }
 
-/*
+/*:
  ## Challenge 41: Find the median
  Difficulty: Easy
  
@@ -171,7 +171,8 @@ func challenge40c(input: [Int]) -> [Int] {
  - Hint #5: Make life easy for yourself: sort the collection first.
  */
 
-/*
+
+/*:
  ## Challenge 42: Recreate index(of:)
  Difficulty: Easy
  
@@ -184,6 +185,9 @@ func challenge40c(input: [Int]) -> [Int] {
  - Hint #1: You will need to extend `Collection` using a constraint on the type of element it stores.
  - Hint #2: Your return type should be `Int?` because the item might not exist in the collection. Hint #3: This would be a good time to use `enumerated()` to retrieve items and their index from a collection.
  */
+
+
+
 
 extension Collection where Iterator.Element == Int {
     func challenge41() -> Double? {

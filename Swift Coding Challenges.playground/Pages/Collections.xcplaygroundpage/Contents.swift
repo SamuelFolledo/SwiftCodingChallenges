@@ -202,6 +202,16 @@ extension Collection where Iterator.Element == Int {
  - Hint #2: Your return type should be `Int?` because the item might not exist in the collection. Hint #3: This would be a good time to use `enumerated()` to retrieve items and their index from a collection.
  */
 
+extension Collection where Iterator.Element: Equatable {
+    func challenge42(indexOf search: Iterator.Element) -> Int? {
+        for (index, item) in self.enumerated() {
+            if item == search {
+                return index
+            }
+        }
+    return nil
+    }
+}
 
 
 /*:

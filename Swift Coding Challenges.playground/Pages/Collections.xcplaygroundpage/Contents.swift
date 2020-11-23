@@ -327,19 +327,19 @@ class LinkedList<T> {
     }
 }
 
-var list = LinkedList<Character>()
-var previousNode: Node<Character>? = nil
-
-for letter in "abcdefghijklmnopqrstuvwxyz" {
-    let node = Node(value: letter)
-    if let predecessor = previousNode { //if there's a node, then point it to this newly created node
-        predecessor.next = node
-    } else { //assign it as list's head
-        list.head = node
-    }
-    previousNode = node
-}
-list.printNodes()
+//var list = LinkedList<Character>()
+//var previousNode: Node<Character>? = nil
+//
+//for letter in "abcdefghijklmnopqrstuvwxyz" {
+//    let node = Node(value: letter)
+//    if let predecessor = previousNode { //if there's a node, then point it to this newly created node
+//        predecessor.next = node
+//    } else { //assign it as list's head
+//        list.head = node
+//    }
+//    previousNode = node
+//}
+//list.printNodes()
 
 /*:
  ## Challenge 44: Linked list mid-point
@@ -359,7 +359,7 @@ Extend your linked list class with a new method that returns the node at the mid
 4. If you move pointer A through the list one item at a time, and pointer B through the list two items at a time, by the time pointer B reaches the end where will pointer A be?
 */
 //Solution... check centerNode in LinkedList
-print("\nCenter Node = \(list.centerNode!.value)")
+//print("\nCenter Node = \(list.centerNode!.value)")
 
 /*:
  ## Challenge 51: Reversing linked lists
@@ -379,5 +379,26 @@ print("\nCenter Node = \(list.centerNode!.value)")
  3. You could create two methods: one for copying, and one for reversing a copy in place. If you do this, please think carefully about Swift’s naming conventions! Hint #4: You need to create a newNext variable that starts as nil. Then traverse the full list, pull out its next value, then change the current node’s next property to be newNext. You can then continue on to whatever node was in next, and repeat until the end of the list is reached.
 
  */
-print("\n")
-list.reversed().printNodes()
+//print("\n")
+//list.reversed().printNodes()
+
+/*:
+ ## Challenge 45: Traversing the tree
+ Difficulty: Easy
+ 
+ **Note**: this challenge cannot be attempted until you have first completed challenge 54.
+ 
+ Write a new method for your binary search tree that traverses the tree in order, running a closure on each node.
+ 
+ **Tip**: Traversing a node in order means visiting its left value, then visiting its own value, then visiting its right value.
+ ### Sample input and output
+ Assuming a binary tree created from the array [2, 1, 3]:
+ - The code `tree.root?.traverse { print($0.key) }` should print 1, 2, 3.
+ - The code `var sum = 0; tree.root?.traverse { sum += $0.key }; print(sum)` should print 6.
+ - The code `var values = [Int](); tree.root?.traverse { values.append($0.key) }; print(values.count)` should print 3.
+ ### Hints
+ - Hint #1: Your entire function can be just three lines of code. Yes, it really is that easy – hurray for recursion!
+ - Hint #2: You can write this method for the binary tree class or for its nodes; it really doesn’t matter. I chose to write it for the nodes so that I can print partial trees.
+ - Hint #3: Make sure it accepts a closure parameter that itself accepts one parameter (your Node<T> equivalent) and returns void. Hint #4: Remember the left and/or right node may not exist.
+
+ */

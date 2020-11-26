@@ -494,3 +494,59 @@ class BinarySearchTree<T: Comparable> {
     }
 }
 
+extension BinarySearchTree: CustomStringConvertible {
+    ///Methods and properties debugging and purposes
+    var description: String {
+        guard let first = root else {
+            return "(Empty)"
+        }
+        var queue = [TreeNode<T>]()
+        queue.append(first)
+        var output = ""
+        while queue.count > 0 {
+            var nodesAtCurrentLevel = queue.count
+            while nodesAtCurrentLevel > 0 {
+                let node = queue.removeFirst()
+                output += "\(node.key) "
+                if node.left != nil {
+                    queue.append(node.left!)
+                }
+                if node.right != nil {
+                    queue.append(node.right!)
+                }
+                nodesAtCurrentLevel -= 1
+            }
+            output += "\n"
+        }
+        return output
+    }
+    
+    //MARK: Methods
+    func isBalanced() -> Bool {
+        func minDepth(from node: TreeNode<T>?) -> Int {
+            guard let node = node else { return 0 }
+            let returnValue = 1 + min(minDepth(from: node.left), minDepth(from: node.right))
+            print("Got min depth \(returnValue) for \(node.key)")
+            return returnValue
+        }
+        
+        func maxDepth(from node: TreeNode<T>?) -> Int {
+            guard let node = node else { return 0 }
+            let returnValue = 1 + max(maxDepth(from: node.left), maxDepth(from: node.right))
+            print("Got max depth \(returnValue) for \(node.key)")
+            return returnValue
+        }
+        
+        guard let root = root else { return true }
+        let difference = maxDepth(from: root) - minDepth(from: root)
+        return difference <= 1
+    }
+}
+
+let balancedTree = BinarySearchTree(array: [50, 25, 100, 26, 101, 24, 99])
+print("Balanced Tree description", balancedTree.description)
+print("Balanced Tree = ", balancedTree.isBalanced())
+
+let unbalancedTree = BinarySearchTree(array:  [10, 5, 4, 3, 2, 1, 11, 12, 13, 14, 15] )
+//print("Unbalanced Tree description", unbalancedTree.description)
+//print("Unbalanced Tree = ", unbalancedTree.isBalanced())

@@ -461,5 +461,36 @@ class TreeNode<T> {
 class BinarySearchTree<T: Comparable> {
     ///The nodes it contains must store data that conforms to `Comparable` in order to place an item to the left of a node if it is less than or equal to it, or to the right of a node otherwise – we need to compare values
     var root: TreeNode<T>?
+    
+    init(array: [T]) {
+        for item in array {
+            if let rootNode = root {
+                var placed = false // this will be set to true when we've created a node from this item
+                var tracker = rootNode // we have a root node, so make it our tracker
+                while placed == false {
+                    // if we're placing an item that comes before our tracker
+                    if item <= tracker.key {
+                        // if we don't already have a left node
+                        if tracker.left == nil {
+                            // make this item our left node
+                            tracker.left = TreeNode(key: item)
+                            // mark it as placed
+                            placed = true
+                        }
+                        tracker = tracker.left! // we already have a left node; make that the tracker so we can compare against it.
+                    } else { // this item is greater than our tracker, so it needs to sit on its right
+                        if tracker.right == nil { // if we don't already have a right node
+                            // make this item our right node
+                            tracker.right = TreeNode(key: item)
+                            placed = true // mark it as placed
+                        }
+                        tracker = tracker.right! // we already have a right node; make that the tracker so we can compare against it.
+                    }
+                }
+            } else {
+                root = TreeNode(key: item)
+            }
+        }
+    }
 }
 

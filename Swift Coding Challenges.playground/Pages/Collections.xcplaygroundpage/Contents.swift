@@ -438,3 +438,28 @@ Extend your linked list class with a new method that returns the node at the mid
 
  */
 
+/*: ### Pseudocode:
+ 1. Loop over every item in the array.
+ 2. If we have a root node already, set it to be our tracker node – that’s the one we’re currently comparing against.
+ 3. If the item is less than or equal to our tracker, and the tracker’s left value is nil, make a
+ new node from our item, make it the tracker’s left value, then mark this item as being placed.
+ 4. If the item is less than or equal to our tracker but we already have a left value, make that left value our new tracker and repeat the loop.
+ 5. If the item is greater than our tracker, and tracker’s right value is nil, make a new node from our item, make it the tracker’s right value, then mark this item as being placed.
+ 6. If the item is greater than our tracker but we already have a right value, make that right value our new tracker and repeat the loop.
+ 7. If we don’t already have a root node, make one from the item and make that the tracker.
+ */
+
+class TreeNode<T> {
+    var key: T
+    var left: TreeNode<T>?
+    var right: TreeNode<T>?
+    init(key: T) {
+        self.key = key
+    }
+}
+
+class BinarySearchTree<T: Comparable> {
+    ///The nodes it contains must store data that conforms to `Comparable` in order to place an item to the left of a node if it is less than or equal to it, or to the right of a node otherwise – we need to compare values
+    var root: TreeNode<T>?
+}
+

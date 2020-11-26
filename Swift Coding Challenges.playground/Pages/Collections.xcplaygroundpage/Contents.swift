@@ -403,31 +403,38 @@ Extend your linked list class with a new method that returns the node at the mid
 
  */
 
-/*
- Challenge 54: Binary search trees
+/*:
+ ## Challenge 54: Binary search trees
  Difficulty: Taxing
+ 
  Create a binary search tree data structure that can be initialized from an unordered array of comparable values, then write a method that returns whether the tree is balanced.
- Tip #1: There is more than one description of a balanced binary tree. For the purpose of this challenge, a binary tree is considered balanced when the height of both subtrees for every node differs by no more than 1.
- Tip #2: Once you complete this challenge, keep your code around because you’ll need it in the next one.
- Sample input and output The following values should create balanced trees:
- • [2, 1, 3]
- • [5, 1, 7, 6, 2, 1, 9]
- • [5, 1, 7, 6, 2, 1, 9, 1]
- • [5, 1, 7, 6, 2, 1, 9, 1, 3]
- • [50, 25, 100, 26, 101, 24, 99]
- • ["k", "t", "d", "a", "z", "m", "f"]
- • [1]
- • [Character]()
+ 
+ **Tip #1**: There is more than one description of a balanced binary tree. For the purpose of this challenge, a binary tree is considered balanced when the height of both subtrees for every node differs by no more than 1.
+ 
+ **Tip #2**: Once you complete this challenge, keep your code around because you’ll need it in the next one.
+ 
+ ### Sample input and output
+ The following values should create balanced trees:
+ - [2, 1, 3]
+ - [5, 1, 7, 6, 2, 1, 9]
+ - [5, 1, 7, 6, 2, 1, 9, 1]
+ - [5, 1, 7, 6, 2, 1, 9, 1, 3]
+ - [50, 25, 100, 26, 101, 24, 99]
+ - ["k", "t", "d", "a", "z", "m", "f"]
+ - [1]
+ - [Character]()
+ 
  The following values should not create balanced trees:
- • [1, 2, 3, 4, 5] • [10, 5, 4, 3, 2, 1, 11, 12, 13, 14, 15] • ["f", "d", "c", "e", "a", "b"]
- Hints
- www.hackingwithswift.com
- Hint #1: You need to create a binary search tree rather than a plain binary tree. This means inserting nodes into the tree based on whether they are less than or equal (left) or greater than (right) their parent.
- Hint #2: You should make your data types use a generic value that conforms to Comparable.
- Hint #3: Each nodes should have a value, plus left and right optional nodes.
- Hint #4: To find the correct place for each array item, start at the top of your tree then keep moving left or right until you find nil – that’s your place.
- Hint #5: You might find it useful to make your binary tree type conform to CustomStringConvertible so you can add a custom var description: String that prints the contents of your tree.
- Hint #6: Checking a binary tree is balanced can be done by recursively comparing the minimum depth of both sides of a node against the maximum depth of both sides of a node. The tree can be considered balanced if the two values differ by no more than 1.
+ - [1, 2, 3, 4, 5]
+ - [10, 5, 4, 3, 2, 1, 11, 12, 13, 14, 15]
+ - ["f", "d", "c", "e", "a", "b"]
+ ### Hints
+ - Hint #1: You need to create a binary search tree rather than a plain binary tree. This means inserting nodes into the tree based on whether they are less than or equal (left) or greater than (right) their parent.
+ - Hint #2: You should make your data types use a generic value that conforms to `Comparable`.
+ - Hint #3: Each nodes should have a value, plus left and right optional nodes.
+ - Hint #4: To find the correct place for each array item, start at the top of your tree then keep moving left or right until you find nil – that’s your place.
+ - Hint #5: You might find it useful to make your binary tree type conform to `CustomStringConvertible` so you can add a custom `var description: String` that prints the contents of your tree.
+ - Hint #6: Checking a binary tree is balanced can be done by recursively comparing the minimum depth of both sides of a node against the maximum depth of both sides of a node. The tree can be considered balanced if the two values differ by no more than 1.
 
  */
 

@@ -456,6 +456,12 @@ class TreeNode<T> {
     init(key: T) {
         self.key = key
     }
+    
+    func traverse(_ body: (TreeNode<T>) -> Void) {
+        left?.traverse(body)
+        body(self)
+        right?.traverse(body)
+    }
 }
 
 class BinarySearchTree<T: Comparable> {

@@ -576,4 +576,18 @@ let unbalancedTree = BinarySearchTree(array:  [10, 5, 4, 3, 2, 1, 11, 12, 13, 14
  - Hint #5: You really ought to use rethrows to avoid irritating users who use non-throwing functions.
  */
 
+// extend all collections
+extension Collection {
+    // add a generic method that accepts a closure operating on our element type and returns a new type, with the whole method returning an array of that type
+    func challenge46<T>(_ transform: (Iterator.Element) throws -> T) rethrows -> [T] {
+        // create the return array
+        var returnValue = [T]()
+        // loop over all our items, trying the transformation and appending it to our return
+        for item in self {
+            returnValue.append(try transform(item))
+        }
+        // send back the return value
+        return returnValue
+    }
+}
 

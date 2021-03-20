@@ -611,5 +611,20 @@ extension Collection {
 
  */
 
+extension Collection where Iterator.Element: Comparable {
+    func challenge47a() -> Iterator.Element? {
+        var lowest: Iterator.Element?
+        for item in self {
+            if let unwrappedLowest = lowest {
+                if item < unwrappedLowest {
+                    lowest = item
+                }
+            } else {
+                lowest = item
+            }
+        }
+        return lowest
+    }
+}
 
 

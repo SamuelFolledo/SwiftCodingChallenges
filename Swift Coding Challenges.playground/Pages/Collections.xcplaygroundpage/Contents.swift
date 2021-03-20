@@ -591,3 +591,25 @@ extension Collection {
     }
 }
 
+/*:
+ ## Challenge 47: Recreate min()
+ Difficulty: Tricky
+ 
+ Write an extension for all collections that reimplements the min() method.
+ 
+ ### Sample input and output
+ - The code [1, 2, 3].challenge47() should return 1.
+ - The code ["q", "f", "k"].challenge47() should return “f”.
+ - The code [4096, 256, 16].challenge47() should return 16.
+ - The code [String]().challenge47() should return nil.
+ 
+ ### Hints
+ - Hint #1: You’ll need to extend the Collection type with a constraint.
+ - Hint #2: Finding the smallest of any value requires using the < operator, which is guaranteed to exist when something conforms to Comparable.
+ - Hint #3: The collection might be empty, so you’ll need to return an optional value.
+ - Hint #4: You can’t compare an optional value against a non-optional one Hint #5: You can solve this quite beautifully using reduce().
+
+ */
+
+
+

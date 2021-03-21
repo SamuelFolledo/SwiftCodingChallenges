@@ -635,7 +635,17 @@ extension Collection where Iterator.Element: Comparable {
         }
         return lowest
     }
-
+    
+    func challenge47c() -> Iterator.Element? {
+        var it = makeIterator()
+        guard var lowest = it.next() else { return nil }
+        while let item = it.next() {
+            if item < lowest {
+                lowest = item
+            }
+        }
+        return lowest
+    }
 }
 
 

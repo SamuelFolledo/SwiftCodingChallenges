@@ -637,7 +637,7 @@ extension Collection where Iterator.Element: Comparable {
     }
     
     func challenge47c() -> Iterator.Element? {
-        var it = makeIterator()
+        var it = makeIterator() ///All collections are backed by an iterator, which is what produces elements and allows us to constrain extensions using Iterator.Element. They also come with a makeIterator() method, that allows you to move through the entire collection and pull out items by calling its next() method. The first time you call next() you’ll receive the first item; the second time you call it you’ll get the second, and so on
         guard var lowest = it.next() else { return nil }
         while let item = it.next() {
             if item < lowest {
@@ -645,6 +645,24 @@ extension Collection where Iterator.Element: Comparable {
             }
         }
         return lowest
+    }
+    
+    //: Using `reduce`
+    func challenge47d() -> Iterator.Element? {
+        guard let lowest = self.first else { return nil }
+        return reduce(lowest) { $1 < $0 ? $1 : $0 }
+    }
+    
+    //: Using `makeIterator()` and `reduce()`
+    func challenge47e() -> Iterator.Element? {
+        var it = makeIterator()
+        guard let lowest = it.next() else { return nil }
+        return IteratorSequence(it).reduce(lowest) { $1 < $0 ? $1 : $0 } //however there is a cost on converting an iterator to a sequence
+    }
+    
+    func challenge47f() -> Iterator.Element? {
+        ///sneaky and not efficient because `sorted()` has to do multiple comparisons in order to place items in their correct order, as well as multiple moves, so it involves far more operations than are required to solve this challenge
+        return self.sorted().first
     }
 }
 

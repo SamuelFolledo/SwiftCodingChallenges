@@ -741,4 +741,13 @@ struct deque<T> {
  - Hint #3: You’ll need to use modulus to find numbers that are repeated an even number of times.
  */
 
-
+func challenge49a(numbers: Int...) -> Int {
+    let counted = NSCountedSet(array: numbers)
+    var sum = 0
+    for case let item as Int in counted {
+        if counted.count(for: item) % 2 == 0 {
+            sum += item
+        }
+    }
+    return sum
+}

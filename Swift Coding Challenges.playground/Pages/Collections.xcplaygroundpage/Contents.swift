@@ -813,4 +813,22 @@ func challenge50(_ numbers: [Int]) -> CountableClosedRange<Int>? {
 }
 
 
-// Challenge 51
+/*
+## Challenge 52: Sum an array of numbers
+ Difficulty: Taxing
+ 
+ Write one function that sums an array of numbers. The array might contain all integers, all doubles, or all floats.
+ 
+ ### Tip:
+ If you think this challenge is easy, you’re either a hardened Swift pro or you’ve underestimated the problem.
+ ### Sample input and output
+ - The code challenge52(numbers: [1, 2, 3]) should return 6.
+ - The code challenge52(numbers: [1.0, 2.0, 3.0]) should return 6.0.
+ - The code challenge52(numbers: Array<Float>([1.0, 2.0, 3.0])) should return 6.0.
+ ### Hints
+ - Hint #1: If this were just about counting integers this would definitely be an easy grade.
+ - Hint #2: This function needs to work with multiple data types, so you’ll need to use generics with a constraint.
+ - Hint #3: There’s no built-in protocol that covers integers, floats, and doubles, so you’ll need to create your own then extend Int, Float, and Double using it.
+ - Hint #4: Your protocol needs to be able to initialize itself with an empty value, and add two instances of itself.
+ - Hint #5: Once you have everything in place, you can solve this challenge functionally.
+ */

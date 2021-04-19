@@ -813,7 +813,7 @@ func challenge50(_ numbers: [Int]) -> CountableClosedRange<Int>? {
 }
 
 
-/*
+/*:
 ## Challenge 52: Sum an array of numbers
  Difficulty: Taxing
  
@@ -832,3 +832,23 @@ func challenge50(_ numbers: [Int]) -> CountableClosedRange<Int>? {
  - Hint #4: Your protocol needs to be able to initialize itself with an empty value, and add two instances of itself.
  - Hint #5: Once you have everything in place, you can solve this challenge functionally.
  */
+
+protocol Numeric {
+    init()
+    static func +(lhs: Self, rhs: Self) -> Self
+}
+
+extension Int: Numeric {}
+extension Float: Numeric {}
+extension Double: Numeric {}
+
+func challenge52<T: Numeric>(numbers: [T]) -> T {
+    var total = T()
+    for number in numbers {
+        total = total + number
+    }
+    return total
+    // OR use reeduce
+    // return numbers.reduce(T(), +)
+}
+

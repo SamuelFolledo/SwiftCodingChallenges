@@ -765,7 +765,7 @@ func challenge49b(numbers: Int...) -> Int {
 }
 
 
-/*
+/*:
  ## Challenge 50: Count the largest range
  Difficulty: Tricky
  
@@ -785,3 +785,31 @@ func challenge49b(numbers: Int...) -> Int {
  - Hint #4: There are two very different cases: if a number is greater than 0, and “everything else”. The index you return needs to be different, because a positive integer you find might be the last one in the array.
 
  */
+
+func challenge50(_ numbers: [Int]) -> CountableClosedRange<Int>? {
+    // this is the return value, nil by default
+    var bestRange: CountableClosedRange<Int>? = nil
+    var bestSum = 0
+    // these track the current sequence of positive integers
+    var currentStart: Int? = nil
+    var currentSum = 0
+    for (index, number) in numbers.enumerated() {
+        if number > 0 {
+            // if we don't have a start for the current range, set one now
+            currentStart = currentStart ?? index
+            currentSum += number
+            if currentSum > bestSum {
+                // update our best range
+                bestRange = currentStart! ... index
+                bestSum = currentSum   
+            }
+        } else {
+            // reset the current range
+            currentSum = 0
+            currentStart = nil
+        }
+    }
+    return bestRange
+}
+
+

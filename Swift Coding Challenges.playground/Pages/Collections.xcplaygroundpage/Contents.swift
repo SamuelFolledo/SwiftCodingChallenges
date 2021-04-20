@@ -813,3 +813,4 @@ func challenge50(_ numbers: [Int]) -> CountableClosedRange<Int>? {
 }
 
 
+// Challenge 51

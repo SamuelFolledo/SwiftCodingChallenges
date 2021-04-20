@@ -852,3 +852,14 @@ func challenge52<T: Numeric>(numbers: [T]) -> T {
     // return numbers.reduce(T(), +)
 }
 
+import Accelerate
+
+func challenge52c(numbers: [Double]) -> Double {
+    // Note:
+    //- Faster for bigger arrays,
+    //- Doesn't work for array of Int
+    //- This library is hard to grasp
+    var result: Double = 0.0
+    vDSP_sveD(numbers, 1, &result, vDSP_Length(numbers.count))
+    return result
+}

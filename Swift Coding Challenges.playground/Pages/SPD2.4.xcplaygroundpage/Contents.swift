@@ -59,7 +59,75 @@ func suggest(searchWord: String, count: Int) -> [String] {
     }
     return results
 }
-
 print(suggest(searchWord: "iLoveDogs", count: 2))
 
+/*:
+ ## Problem 2
+ Given an array a of n numbers and a target value t, find two numbers whose sum is t.
+ 
+ Example: a=[5, 3, 6, 8, 2, 4, 7], t=10 ⇒ [3, 7] or [6, 4] or [8, 2]
+ */
+
+func find_pair(numbers: [Int], target: Int) -> (Int?, Int?) {
+    for number in numbers {
+        for num in numbers where num + number == target {
+            return (number, num)
+        }
+    }
+    return (nil, nil)
+}
+let numbers = [1,2,3,4,5,6]
+print(find_pair(numbers: numbers, target: 8))
+
+
+/*:
+ ## Problem 3
+ Given an array a of n numbers and a count k find the k largest values in the array a.
+
+ Example: a=[5, 1, 3, 6, 8, 2, 4, 7], k=3 ⇒ [6, 8, 7]
+ */
+let numbersToSort = [5, 1, 3, 6, 8, 2, 4, 7]
+func getMaxNumbers(numbers: [Int], maxCount: Int) -> [Int] {
+    return Array(numbers.sorted{ $0 > $1 }.prefix(maxCount))
+}
+print(getMaxNumbers(numbers: numbersToSort, maxCount: 3))
+
+/*:
+ ## Problem 3
+ Given two arrays a and b of numbers and a target value t, find a number from each array whose sum is closest to t.
+ 
+ Example: a=[9, 13, 1, 8, 12, 4, 0, 5], b=[3, 17, 4, 14, 6], t=20 ⇒ [13, 6] or [4, 17] or [5, 14]
+ */
+
+func getClosestSum(numbers1: [Int], numbers2: [Int], target: Int) -> [Int] {
+    var result: [Int] = []
+    for num1 in numbers1 {
+        for num2 in numbers2 {
+            if !result.isEmpty { //if result is not empty
+                //use absolute to turn the difference to positive
+                let currentDiff = abs(num1 + num2 - target)
+                if currentDiff == 0 {
+                    result[0] = num1
+                    result[1] = num2
+                    return result
+                }
+                //use absolute to turn the max difference to positive
+                let maxDiff = abs(result[0] + result[1] - target) //turn to positive
+                if currentDiff < maxDiff {
+                    //if currentDiff is less than maxDiff, update result
+                    result[0] = num1
+                    result[1] = num2
+                }
+            } else {
+                //if result is empty, append num1 and num2
+                result.append(contentsOf: [num1, num2])
+            }
+        }
+    }
+    return result
+}
+
+let numbers1 = [9, 13, 1, 8, 12, 4, 0, 5]
+let numbers2 = [3, 17, 4, 14, 6]
+print(getClosestSum(numbers1: numbers1, numbers2: numbers2, target: 2))
 //: [Next](@next)

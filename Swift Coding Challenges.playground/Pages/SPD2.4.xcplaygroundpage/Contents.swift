@@ -21,4 +21,45 @@ import Foundation
  2. Create a plan for how you’ll solve the problem from the absolute simplest possible version as step 1, then remove one of the simplifications in step 2, then another in step 3, and finally remove all simplifications so you are solving the full version of the problem in your final step. DO NOT attempt to solve the full version of the problem right away. The goal of this is to break the problem down into smaller, simpler steps to create an incremental path from the simplest version to the full problem. Practicing this will help you during real interviews, especially when you hear a new problem and think to yourself “OMG this is hard!” – This is to develop a strategy for how to move past those thoughts.
  */
 
+func suggest(searchWord: String, count: Int) -> [String] {
+    var scoreWords: [String: Int] = [:]
+    let words = ["DogeCoin", "YangGang2020", "HodlForLife", "fakeDonaldDrumpf", "GodIsLove", "BernieOrBust"]
+    var possibleSearchWords: [String] = []
+    for i in 0..<searchWord.count { //loop through each letter from beginning
+        for j in i..<searchWord.count { //loop through each letter from i to end of the word
+//            print("I:\(i)\tJ:\(j)\t=\t\(Array(searchWord)[i])-\(Array(searchWord)[j])")
+            let possibleSearchWord = String(Array(searchWord)[i...j])
+//            print(possibleSearchWord)
+            possibleSearchWords.append(possibleSearchWord)
+        }
+    }
+    for word in words {
+        for possibleWord in possibleSearchWords {
+            if word.contains(possibleWord) { //check if possibleWord is in word
+                if scoreWords[word] == nil {
+                    //if word doesn't exist in the dictionary
+                    scoreWords[word] = possibleWord.count
+                } else if scoreWords[word]! < possibleWord.count {
+                    //if score is lesser than possibleWord's count
+                    scoreWords[word] = possibleWord.count
+                }
+            }
+        }
+    }
+    print(scoreWords)
+    //sort scoreWords
+    let sortedResults = (Array(scoreWords).sorted { $0.1 > $1.1 })
+    var results: [String] = []
+    //get the top scores to return
+    for result in sortedResults {
+        results.append(result.key)
+        if results.count == count {
+            break
+        }
+    }
+    return results
+}
+
+print(suggest(searchWord: "iLoveDogs", count: 2))
+
 //: [Next](@next)

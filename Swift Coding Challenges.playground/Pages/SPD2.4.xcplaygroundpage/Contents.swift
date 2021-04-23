@@ -130,4 +130,48 @@ func getClosestSum(numbers1: [Int], numbers2: [Int], target: Int) -> [Int] {
 let numbers1 = [9, 13, 1, 8, 12, 4, 0, 5]
 let numbers2 = [3, 17, 4, 14, 6]
 print(getClosestSum(numbers1: numbers1, numbers2: numbers2, target: 2))
+
+/*:
+ ## Mock Interview Challenge - Code Weird Palindrome
+ Given a string, find the shortest possible string which can be achieved by adding characters to the end of initial string to make it a palindrome.
+ ### Example
+ For `st = "abcdc"`, the output should be `buildPalindrome(st) = "abcdcba"`.
+ */
+
+//ababa -> ababa
+//abc -> abcba
+//abaa -> abaaba
+
+func buildPalindrome(word: String) -> String {
+    let wordAsArray = Array(word)
+    var result = word                                                   //abaa
+    //check if palindrome
+    if word.reversed() == Array(word) {
+        return word
+    }
+    //create reversedWord - abaa -> aaba
+//    let reversedWord = word.reversed()                                  //aaba
+    //loop through reversedWord
+    var i = wordAsArray.count - 1
+    for letter in wordAsArray {                                    //      0,a       1,a       2,b       3,a
+        if i == wordAsArray.count - 1 {
+            i-=1
+            continue
+        }
+        //check if letter doesnt match, append the letter
+        if letter == wordAsArray[i] {       //                a == wordsArray[2]
+            print("Letter \(letter) == \(wordAsArray[i])=\(i)")
+            continue
+        }
+        print("L:\(letter)---\(wordAsArray[i])=\(i)")
+        print("Adding \(String(wordAsArray[0..<i].reversed()))")
+        result += String(wordAsArray[0..<i].reversed())
+        break
+//        i -= 1
+    }
+    return String(result)
+}
+
+print(buildPalindrome(word: "abx"))
+
 //: [Next](@next)

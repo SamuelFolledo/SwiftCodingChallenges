@@ -327,6 +327,62 @@ class LinkedList<T> {
     }
 }
 
+/*
+ ## Challenge 53: Linked Lists with a loop
+ Difficulty: Taxing
+ Someone used the linked list you made previously, but they accidentally made one of the items link back to an earlier part of the list. As a result, the list can’t be traversed properly because it loops infinitely.
+ 
+ Your job is to write a function that accepts your linked list as its parameter, and returns the node at the start of the loop, i.e. the one that is linked back to.
+ 
+ ### Sample input and output You can simulate a looped link list with this code:
+ ```
+ var list = LinkedList<UInt32>()
+ var previousNode: LinkedListNode<UInt32>? = nil
+ var linkBackNode: LinkedListNode<UInt32>? = nil
+ var linkBackPoint = Int(arc4random_uniform(1000))
+ for i in 1...1000 {
+    let node = LinkedListNode(value: arc4random())
+    if i == linkBackPoint { linkBackNode = node }
+    if let predecessor = previousNode {
+        predecessor.next = node
+    } else {
+        list.start = node
+    }
+    previousNode = node
+ }
+ previousNode?.next = linkBackNode
+ ```
+ 
+ You will need to use whatever `LinkedList` and `LinkedListNode` structures you created in the previous challenge.
+ 
+ When your code has finished, your `findLoopStart()` should return the same node contained in the `linkBackNode` variable.
+ 
+ ### Hints
+ - Hint #1: There are two ways to solve this: using a set or using mathematics. You could also use an array, but only if you had no regard at all for performance.
+ - Hint #2: If you take the set approach you will need to conform to `Hashable`, which in turn implies `Equatable`.
+ - Hint #3: To conform to `Hashable` you must be able to give each of your linked list nodes a unique `hashValue` integer. You could store this as a property in your linked list, and increment it by 1 every time a `getUniqueHashValue()` method is called.
+ - Hint #4: To conform to `Equatable` you will need to implement `static func ==` on your linked list node. This could be as simple as returning true if the two hash values are the same.
+ - Hint #5: You can then loop over the nodes in your list, checking whether they are in a `seen` set. If a node isn’t in the set, add it; if it is in the set, you have your loop point so return it. If you reach the end of your list it means you didn’t have a loop, so return nil.
+ - Hint #6: You can also solve this problem with pure mathematics, which is both significantly faster and more memory efficient. If you ever learned to do tortoise and hare loop detection, now is your chance to feel smug!
+ - Hint #7: Your solution to challenge 44 provides the starting point for the mathematical solution here.
+ */
+
+func challenge53<T>(startNode: LinkedListNode<T>?) -> LinkedListNode<T>? {
+    var currentNode = start
+    var seen = Set<LinkedListNode<T>>()
+    while let node = currentNode {
+        if seen.contains(node) {
+            return node
+        } else {
+            seen.insert(node)
+            currentNode = node.next
+        }
+    }
+    return nil
+}
+    
+
+
 //var list = LinkedList<Character>()
 //var previousNode: Node<Character>? = nil
 //
@@ -863,3 +919,5 @@ func challenge52c(numbers: [Double]) -> Double {
     vDSP_sveD(numbers, 1, &result, vDSP_Length(numbers.count))
     return result
 }
+
+

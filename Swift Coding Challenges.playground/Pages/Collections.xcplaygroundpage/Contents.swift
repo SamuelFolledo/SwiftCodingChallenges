@@ -237,18 +237,28 @@ extension Collection where Iterator.Element: Equatable {
  6. The `print()` function has a terminator parameter.
  */
 
-class Node<T> {
+class LinkedListNode<T>: Hashable { //conformed to Hashable on challenge 53
     var value: T
-    var next: Node?
+    var next: LinkedListNode?
+    
     init(value: T) {
         self.value = value
     }
 }
+extension LinkedListNode { //added after challenge 53
+    static func == (lhs: LinkedListNode<T>, rhs: LinkedListNode<T>) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) { //needed for challenge 53 instead of deprecated hashValue
+        hasher.combine(ObjectIdentifier(self))
+    }
+}
 
 class LinkedList<T> {
-    var head: Node<T>?
+    var head: LinkedListNode<T>?
     
-    var centerNode: Node<T>? {
+    var centerNode: LinkedListNode<T>? {
         var slow = head
         var fast = head
         while fast != nil && fast?.next != nil { //if fast's next pointer is nil, then the slow is the center node
@@ -266,6 +276,14 @@ class LinkedList<T> {
         }
     }
     
+    //Needed for challenge 53
+    private var uniqueHashValue = 0
+    
+    func getUniqueHashValue() -> Int {
+        uniqueHashValue += 1
+        return uniqueHashValue
+    }
+    
     //challenge 51a
 //    func reversed() -> LinkedList<T> {
 //        // create our copy for the return value
@@ -278,7 +296,7 @@ class LinkedList<T> {
 //            var currentNode = head?.next
 //            while let node = currentNode {
 //                // create a copy of this node
-//                let copyNode = Node(value: node.value)
+//                let copyNode = LinkedListNode(value: node.value)
 //                // make it point to the node we created previously
 //                copyNode.next = previousCopyNode
 //                // then make it the previous node, so we can move forward
@@ -295,11 +313,11 @@ class LinkedList<T> {
     func copy() -> LinkedList<T> {
         let copy = LinkedList<T>()
         if let startNode = head {
-            copy.head = Node(value: startNode.value) //if we have a head, assign it as copy's head
+            copy.head = LinkedListNode(value: startNode.value) //if we have a head, assign it as copy's head
             var previousCopyNode = copy.head //initialize with copy's head
             var currentNode = head?.next
             while let node = currentNode { //loop through each node after head
-                let copyNode = Node(value: node.value) //make a copy node from current node
+                let copyNode = LinkedListNode(value: node.value) //make a copy node from current node
                 previousCopyNode?.next = copyNode //point currentCopy node to new copyNode
                 previousCopyNode = copyNode //update currentCopyNode
                 currentNode = currentNode?.next //go to next node
@@ -310,7 +328,7 @@ class LinkedList<T> {
     
     func reverse() {
         var currentNode = head
-        var newNext: Node<T>? = nil
+        var newNext: LinkedListNode<T>? = nil
         while let node = currentNode { //loop til the end of list
             let next = node.next //create a copy of the node's next
             node.next = newNext //make the node's next the newNext (nil at first)
@@ -327,7 +345,7 @@ class LinkedList<T> {
     }
 }
 
-/*
+/*:
  ## Challenge 53: Linked Lists with a loop
  Difficulty: Taxing
  Someone used the linked list you made previously, but they accidentally made one of the items link back to an earlier part of the list. As a result, the list can’t be traversed properly because it loops infinitely.
@@ -368,7 +386,7 @@ class LinkedList<T> {
  */
 
 func challenge53<T>(startNode: LinkedListNode<T>?) -> LinkedListNode<T>? {
-    var currentNode = start
+    var currentNode = startNode
     var seen = Set<LinkedListNode<T>>()
     while let node = currentNode {
         if seen.contains(node) {

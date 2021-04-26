@@ -343,7 +343,53 @@ class LinkedList<T> {
         copy.reverse() //from the copy created, reverse it
         return copy
     }
+    
+    ///challenge 53 - better solution and does not require Hashable
+    func findLoopStartB() -> LinkedListNode<T>? {
+        var slow = head
+        var fast = head
+        // go through the list until we find the end
+        while fast != nil && fast?.next != nil {
+            // slow moves one space, fast moves two
+            slow = slow?.next
+            fast = fast?.next?.next
+            // if the two met it means we found a loop, so exit the loop
+            if slow === fast {
+                break
+            }
+        }
+        // if fast or its successor is nil it means we made it to the end of the list, so there's no loop
+        guard fast != nil || fast?.next != nil else { return nil }
+        // if we're still here, we know for sure there's a loop
+        slow = head
+        // loop through until we find another match
+        while slow! !== fast! {
+            // move slow and fast the same speed now
+            slow = slow?.next
+            fast = fast?.next
+        }
+        // slow and fast now point to the same now, so return either one of them
+        return slow
+    }
 }
+
+//Challenge 53 sample input
+var list = LinkedList<UInt32>()
+var previousNode: LinkedListNode<UInt32>? = nil
+var linkBackNode: LinkedListNode<UInt32>? = nil
+var linkBackPoint = Int(arc4random_uniform(1000))
+for i in 1...1000 {
+    let node = LinkedListNode(value: arc4random())
+    if i == linkBackPoint { linkBackNode = node }
+    if let predecessor = previousNode {
+        predecessor.next = node
+    } else {
+        list.head = node
+    }
+    previousNode = node
+}
+previousNode?.next = linkBackNode
+
 
 /*:
  ## Challenge 53: Linked Lists with a loop
@@ -398,8 +444,6 @@ func challenge53<T>(startNode: LinkedListNode<T>?) -> LinkedListNode<T>? {
     }
     return nil
 }
-    
-
 
 //var list = LinkedList<Character>()
 //var previousNode: Node<Character>? = nil

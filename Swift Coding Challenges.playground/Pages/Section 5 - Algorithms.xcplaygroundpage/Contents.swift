@@ -23,6 +23,36 @@
  - Hint #5: If you try printing out the array after each sorting pass you might spot a pattern that you can use to optimize your code.
  */
 
+extension Array where Element: Comparable {
+    func challenge55a() -> [Element] {
+        // refuse to sort invalid arrays
+        guard count > 1 else { return self }
+        var returnValue = self
+        var swapsMade: Bool
+        repeat {
+            // we're looping from scratch, so reset swapsMade to false
+            swapsMade = false
+            // loop over all items in the array, excluding the last one
+            for index in 0 ..< returnValue.count - 1 {
+                // pull out the current element and its successor
+                let element = returnValue[index]
+                let next = returnValue[index + 1]
+                // if the current one is bigger than its successor…
+                if (element > next) {
+                    print("Before \(returnValue)")
+                    // swap them
+                    returnValue.swapAt(index, index + 1)
+                    // and mark that we made a swap so the loop will repeat
+                    swapsMade = true
+                    print("After \(returnValue)")
+                }
+            }
+        } while swapsMade == true
+        // send back the sorted array
+        return returnValue
+    }
+}
 
+[12, 5, 4, 9, 3, 2, 1].challenge55a()
 
 //: [Next](@next)

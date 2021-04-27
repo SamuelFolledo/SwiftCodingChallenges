@@ -1,7 +1,28 @@
 //: [Previous](@previous)
 
-import Foundation
+/*:
+ # Swift Coding Challenge's Section 5: Algorithms
+ */
 
-var str = "Hello, playground"
+/*:
+ ## Challenge 55: Bubble sort
+ Difficulty: Easy
+ 
+ Create an extension for arrays that sorts them using the bubble sort algorithm.
+ 
+ Tip: A bubble sort repeatedly loops over the items in an array, comparing items that are next to each other and swapping them if they aren’t sorted. This looping continues until all items are in their correct order.
+ ### Sample input and output
+ - The array `[12, 5, 4, 9, 3, 2, 1]` should become `[1, 2, 3, 4, 5, 9, 12]`.
+ - The array `["f", "a", "b"]` should become `["a", "b", "f"]`.
+ - The array `[String]()` should become `[]`.
+ ### Hints
+ - Hint #1: You’ll need to extend the `Array` type, but only when its elements conform to `Comparable` so you can establish a sort order.
+ - Hint #2: You want to repeat your loop while a condition is `true, so `repeat` while makes sense.
+ - Hint #3: Watch out for the case when the array is empty.
+ - Hint #4: You can swap two values using the global `swap()` function like this: `array.swapAt(a, b)`.
+ - Hint #5: If you try printing out the array after each sorting pass you might spot a pattern that you can use to optimize your code.
+ */
+
+
 
 //: [Next](@next)

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <playground version='6.0' target-platform='ios' display-mode='rendered'>
     <pages>
-        <page name='Strings'/>
-        <page name='Numbers'/>
-        <page name='Files'/>
-        <page name='Collections'/>
+        <page name='Section 1 - Strings'/>
+        <page name='Section 2 - Numbers'/>
+        <page name='Section 3 - Files'/>
+        <page name='Section 4 - Collections'/>
         <page name='Functional Programming'/>
         <page name='Linked List'/>
         <page name='Binary Tree'/>
@@ -13,5 +13,6 @@
         <page name='Interview Questions'/>
         <page name='SPD2.4'/>
         <page name='Codility'/>
+        <page name='Section 5 - Algorithms'/>
     </pages>
 </playground>

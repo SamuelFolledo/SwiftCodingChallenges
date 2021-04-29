@@ -51,6 +51,27 @@ extension Array where Element: Comparable {
         // send back the sorted array
         return returnValue
     }
+    
+    func challenge55b() -> [Element] {
+        //this is a better approach as it doesn't check the previous numbers that were already sorted
+        guard count > 0 else { return [Element]() }
+        var returnValue = self
+        var highestSortedIndex = count
+        repeat {
+            var lastSwapIndex = 0
+            for index in 0 ..< highestSortedIndex - 1 {
+                let element = returnValue[index]
+                let next = returnValue[index + 1]
+                if (element > next) {
+                    returnValue.swapAt(index, index + 1)
+                    lastSwapIndex = index + 1
+                }
+            }
+            highestSortedIndex = lastSwapIndex
+            
+        } while highestSortedIndex != 0
+        return returnValue
+    }
 }
 
 [12, 5, 4, 9, 3, 2, 1].challenge55a()

@@ -95,6 +95,31 @@ extension Array where Element: Comparable {
  - Hint #4: If you want to try the in-place solution, pull out the current item you want to sort, then keep moving other elements to the right until you find the correct spot for your item.
  */
 
+extension Array where Element: Comparable {
+    func challenge56a() -> [Element] {
+        guard count > 1 else { return self }
+        var returnValue = [Element]()
+        for unsorted in self {
+            if returnValue.count == 0 {
+                returnValue.append(unsorted)
+            } else {
+                var placed = false
+                for (index, sorted) in returnValue.enumerated() {
+                    if unsorted < sorted {
+                        returnValue.insert(unsorted, at: index)
+                        placed = true
+                        break
+                    }
+                }
+                if !placed {
+                    returnValue.append(unsorted)
+                }
+            }
+        }
+        return returnValue
+    }
+}
+
 
 
 //: [Next](@next)

@@ -112,6 +112,7 @@ extension Array where Element: Comparable {
                     }
                 }
                 if !placed {
+                    //if unsorted element never got inserted, append at the end
                     returnValue.append(unsorted)
                 }
             }

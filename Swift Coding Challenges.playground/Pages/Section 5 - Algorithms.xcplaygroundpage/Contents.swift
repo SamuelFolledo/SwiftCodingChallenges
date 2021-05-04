@@ -140,4 +140,40 @@ extension Array where Element: Comparable {
     }
 }
 
+/*
+ ## Challenge 57: Isomorphic values
+ Difficulty: Easy
+ 
+ Write a function that accepts two values and returns true if they are isomorphic. That is, each part of the value must map to precisely one other, but that might be itself.
+ 
+ Tip: Strings A and B are considered isomorphic if you can replace all instances of each letter with another. For example, “tort” and “pump” are isomorphic, because you can replace both Ts with a P, the O with a U, and the R with an M. For integers you compare individual digits, so 1231 and 4564 are isomorphic numbers. For arrays you compare elements, so [1, 2, 1] and [4, 8, 4] are isomorphic.
+ ### Sample input and output These are all isomorphic values:
+ - “clap” and “slap”
+ - “rum” and “mud”
+ - “pip” and “did”
+ - “carry” and “baddy”
+ - “cream” and “lapse”
+ - 123123 and 456456
+ - 3.14159 and 2.03048
+ - [1, 2, 1, 2, 3] and [4, 5, 4, 5, 6]
+ 
+ These are not isomorphic values:
+ - “carry” and “daddy” – the Rs have become D, but C has also become D.
+ - “did” and “cad” – the first D has become C, but the second has remained D.
+ - “maim” and “same” – the first M has become S, but the second has become E.
+ - “curry” and “flurry” – the strings have different lengths.
+ - 112233 and 112211 – the number 1 is being mapped to 1, and the number 3 is also
+ being mapped to 1.
+
+ ### Hints
+ - Hint #1: Stringification holds the key to solve this problem simply. Your parameters should both be Any, and you can use the String(describing:) initializer to stringify them.
+ - Hint #2: You need to loop over all the characters in both stringified character arrays. To avoid out of bounds problems, make sure you start by checking both strings are the same length.
+ - Hint #3: You should store your character mappings using a dictionary of type [Character: Character].
+ - Hint #4: If you convert the characters of each string into an array you’ll find subscripting significantly easier.
+ - Hint #5: When you loop over each letter in the current string, you can check if it exists as a key in your character map. For characters that exist, check that its value matches the letter in the second string – if it doesn’t, it’s not an isomorphic string.
+ - Hint #6: If your letter doesn’t exist as a key in the character map, it’s possible the second string’s letter does exist as a value attached to a different key. If so, it’s not an isomorphic string.
+ - Hint #7: If the character isn’t already a key, and the second string’s letter isn’t already a value, then add the character and matching second string letter to your character mapping dictionary.
+ - Hint #8: If you’ve made it through all the characters in the first string and not encountered any problems, you have an isomorphic string.
+ */
+
 //: [Next](@next)

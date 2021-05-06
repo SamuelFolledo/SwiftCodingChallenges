@@ -39,12 +39,12 @@ extension Array where Element: Comparable {
                 let next = returnValue[index + 1]
                 // if the current one is bigger than its successor…
                 if (element > next) {
-                    print("Before \(returnValue)")
+//                    print("Before \(returnValue)")
                     // swap them
                     returnValue.swapAt(index, index + 1)
                     // and mark that we made a swap so the loop will repeat
                     swapsMade = true
-                    print("After \(returnValue)")
+//                    print("After \(returnValue)")
                 }
             }
         } while swapsMade == true
@@ -199,5 +199,5 @@ func challenge57(first firstValue: Any, second secondValue: Any) -> Bool {
     return true
 }
 
-
+print("Challenge 57: ", challenge57(first: "clap", second: "slap"))
 //: [Next](@next)

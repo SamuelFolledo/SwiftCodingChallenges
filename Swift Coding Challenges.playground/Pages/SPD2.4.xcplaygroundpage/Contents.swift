@@ -174,4 +174,87 @@ func buildPalindrome(word: String) -> String {
 
 print(buildPalindrome(word: "abx"))
 
+
+
+
+
+
+
+
+func distanceTraversed(lot: [[Int]]) -> Int {
+    // Write your code here
+    var obstacleLocation: (row: Int, column: Int)? = getObstacleLocation()
+    func getObstacleLocation() -> (row: Int, column: Int)? {
+        for x in 0..<lot.count {
+            for y in 0..<lot[x].count {
+                if lot[x][y] == 9 {
+                    return (row: x, column: y)
+                }
+            }
+        }
+        return nil
+    }
+    print("obstacle location \(obstacleLocation)")
+    
+    
+//    enum Direction {
+//        case up, down, leftt, rightt
+//    }
+//    func getSurroundings(row: Int, column: Int) -> (obstaclePosition: Direction?, flatPositions: [Direction]) {
+//        var directions: [Direction] = []
+//        if let rightPos = lot[row][column+1] {
+//            if rightPos == 9 { //found obstacle
+//                return (.rightt, [])
+//            } else if rightPos == 1 { //can go right
+//                directions.append(.rightt)
+//            }
+//        }
+//        if let leftPos = lot[row][column-1] {
+//            if leftPos == 9 { //found obstacle
+//                return (.leftt, [])
+//            } else if leftPos == 1 { //can go left
+//                directions.append(.leftt)
+//            }
+//        }
+//        if let upPos = lot[row+1][column] {
+//            if upPos == 9 { //found obstacle
+//                return (.up, [])
+//            } else if upPos == 1 { //can go up
+//                directions.append(.up)
+//            }
+//        }
+//        if let downPos = lot[row][column+1] {
+//            if downPos == 9 { //found obstacle
+//                return (.down, [])
+//            } else if downPos == 1 { //can go down
+//                directions.append(.down)
+//            }
+//        }
+//        return (nil, directions)
+//    }
+//
+//    var distance = 0
+//    if lot.count < 1 { return -1 } //handle row constraint
+//    var currentRow = 0
+//    var currentColumn = 0
+//
+//    for rowIndex in 0..<lot.count {
+//        let row = lot[rowIndex]
+//        if row.count > 1000 { return -1 } //handle column constraint
+//        for columnIndex in 0..<row.count {
+//            let column = row[columnIndex]
+//            // let surrounding = getSurroundings(row: rowIndex, column: columnIndex)
+//            // if obstaclePosition = surrounding.0 {
+//            //     return distance + 1
+//            // }
+//            // let directions = surrounding.1
+//
+//        }
+//    }
+    return -1
+}
+
+distanceTraversed(lot: [[1,0,0], [1,0,0], [1,9,1]])
+
+
 //: [Next](@next)

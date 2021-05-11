@@ -22,6 +22,7 @@
  - Hint #4: You can swap two values using the global `swap()` function like this: `array.swapAt(a, b)`.
  - Hint #5: If you try printing out the array after each sorting pass you might spot a pattern that you can use to optimize your code.
  */
+import Foundation
 
 extension Array where Element: Comparable {
     func challenge55a() -> [Element] {
@@ -226,6 +227,34 @@ print("Challenge 57: ", challenge57(first: "clap", second: "slap"))
  - Hint #4: As you loop over each character in the string, it’s either an opening bracket or a closing bracket. If it’s an opening one it can go on your stack; if it’s a closing one, then it should be the matching pair of whatever is on the end of your bracket stack.
  - Hint #5: If the function ends with anything left in the bracket stack it means there was one bracket that was not closed – a failure.
  */
+
+func challenge58(input: String) -> Bool {
+    let validBrackets = "([{<>}])"
+    let validCharacterSet = CharacterSet(charactersIn: validBrackets).inverted
+    guard input.rangeOfCharacter(from: validCharacterSet) == nil else { return false }
+    let matchingBrackets: [Character: Character] = ["(": ")", "[": "]", "{": "}", "<": ">"]
+    var usedBrackets = [Character]()
+    for bracket in input {
+        if matchingBrackets.keys.contains(bracket) {
+            // this is an opening bracket
+            usedBrackets.append(bracket)
+        } else {
+            // this is a closing bracket – try to pull off our previous open
+            if let previousBracket = usedBrackets.popLast() {
+                if matchingBrackets[previousBracket] != bracket {
+                    // if they don't match, this is a bad string
+                    return false
+                }
+            } else {
+                // we don't have an opening bracket, this is a bad string
+                return false
+            }
+        }
+    }
+    return usedBrackets.count == 0
+}
+
+print("Challenge 58: \(challenge58(input: "{}(()})"))")
 
 
 

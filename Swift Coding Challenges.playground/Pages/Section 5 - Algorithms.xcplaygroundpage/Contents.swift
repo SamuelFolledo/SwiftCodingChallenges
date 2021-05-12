@@ -560,5 +560,73 @@ points.append((first: CGPoint.zero, second: CGPoint(x: -100, y: 0)))
 points.append((first: CGPoint.zero, second: CGPoint(x: -100, y: -100)))
 print("Challenge 62: Points to Angles = ", challenge62(points: points))
 
+/*:
+ ## Challenge 63: Flood fill
+ Difficulty: Taxing
+ 
+ Write a function that accepts a two-dimensional array of integers that are 0 or 1, a new number to place, and a position to start. You should read the existing number at the start position, change it to the new number, then change any surrounding numbers that matched the start number, then change any surrounding those, and so on - like a flood fill algorithm in Photoshop.
+ 
+ **Tip** #1: If you value your sanity, you will add import GameplayKit then generate your grid using this code:
+ ```
+ let random = GKMersenneTwisterRandomSource(seed: 1)
+ var grid = (1...10).map { _ in (1...10).map { _ in
+    Int(random.nextInt(upperBound: 2))
+ }}
+ ```
+ That will allow you to produce the same grid every time, which ought to make debugging easier. (Note: I made grid a variable rather than a constant for a reason.)
+ 
+ **Tip** #2: A flood fill works by filling grid positions directly above, below, to the left, and to the right, stopping only when a different number is encountered.
+ 
+ **Tip** #3: If the arrays contained all zeros, filling 5 would cause the arrays to contain all 5s because all numbers would be filled.
+ 
+ ### Sample input and output
+ Given the following set up:
+ ```
+ let random = GKMersenneTwisterRandomSource(seed: 1)
+ let grid = (1...10).map { _ in (1...10).map { _ in Int(random.nextInt(upperBound: 2)) } }
+ ```
+ 
+ You will have the following grid:
+ 
+ ```
+ [0, 0, 0, 0, 0, 1, 0, 0, 1, 1]
+ [0, 1, 1, 0, 0, 0, 0, 1, 0, 0]
+ [0, 1, 0, 0, 0, 0, 0, 0, 1, 1]
+ [1, 0, 1, 0, 0, 1, 1, 0, 0, 0]
+ [1, 0, 1, 0, 1, 1, 1, 1, 1, 0]
+ [1, 0, 1, 1, 0, 0, 0, 0, 0, 0]
+ [0, 0, 0, 0, 1, 1, 1, 0, 1, 1]
+ [1, 1, 1, 0, 0, 1, 1, 1, 1, 1]
+ [1, 1, 0, 1, 1, 1, 1, 0, 0, 0]
+ [0, 1, 1, 0, 0, 1, 0, 1, 1, 1]
+
+ ```
+ 
+ After running this code:
+ 
+ `challenge63(fill: 5, in: grid, at: (x: 2, y: 0))`
+ 
+ You will have the following grid:
+ ```
+ [5, 5, X, 5, 5, 1, 5, 5, 1, 1]
+ [5, 1, 1, 5, 5, 5, 5, 1, 0, 0]
+ [5, 1, 5, 5, 5, 5, 5, 5, 1, 1]
+ [1, 0, 1, 5, 5, 1, 1, 5, 5, 5]
+ [1, 0, 1, 5, 1, 1, 1, 1, 1, 5]
+ [1, 0, 1, 1, 5, 5, 5, 5, 5, 5]
+ [0, 0, 0, 0, 1, 1, 1, 5, 1, 1]
+ [1, 1, 1, 0, 0, 1, 1, 1, 1, 1]
+ [1, 1, 0, 1, 1, 1, 1, 0, 0, 0]
+ [0, 1, 1, 0, 0, 1, 0, 1, 1, 1]
+ ```
+ 
+ Note, in the above grid I marked with X where the fill started, but that will be a five too.
+ ### Hints
+ - Hint #1: You can solve this using a recursive function, or using a loop.
+ - Hint #2: You will almost certainly find it useful to add print() statements inside your loop or function that displays what square is being manipulated, and perhaps also the current grid.
+ - Hint #3: Keep a stack of squares that need to be filled. Start by adding your initial square, then loop over that and remove one square to fill / spread from each time.
+ */
+
+
 
 //: [Next](@next)

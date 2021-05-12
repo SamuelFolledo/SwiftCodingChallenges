@@ -279,7 +279,60 @@ print("Challenge 58: \(challenge58(input: "{}(()})"))")
  - Hint #2: There are lots of ways to pick a pivot point; choosing a random item is probably best.
  - Hint #3: You can do most of the work with filter() if you want.
  - Hint #4: For maximum performance, try to solve the challenge in-place using inout.
-
  */
+
+extension Array where Element: Comparable {
+    //slow version of quicksort
+    func challenge59a() -> [Element] {
+        guard count > 1 else { return self }
+        // pivot on the center of the array
+        let pivot = self[count / 2]
+        // create three new buckets that we'll sort ourselves into
+        var before = [Element]()
+        var after = [Element]()
+        var equal = [Element]()
+        // loop over all items, placing each one into a bucket by comparing against our pivot
+        for item in self {
+            if item < pivot {
+                before.append(item)
+            } else if item > pivot {
+                after.append(item)
+            } else {
+                equal.append(item)
+            }
+        }
+        // call this function recursively then return the combined input
+        return before.challenge59a() + equal + after.challenge59a()
+    }
+    
+    //even slower than challenge59a quicksort
+    func challenge59b() -> [Element] {
+        guard count > 1 else { return self }
+        let pivot = self[count / 2]
+        let before = filter { $0 < pivot }
+        let after = filter { $0 > pivot }
+        let equal = filter { $0 == pivot }
+        return before.challenge59b() + equal + after.challenge59b()
+    }
+    
+/*:
+The truth is that picking a pivot point is complicated, and in fact the way you choose a pivot really depends on your array. For example, **if your array is often already sorted, using count / 2 is a great choice**. If your array is very large, then you’ll want to take a more complex approach because the time spent picking a better pivot is going to pay off with reduced sort time. So, you might choose something like median of three, where you pick three random elements from the array and pivot on whichever one lies in the center.
+ 
+**The reason for choosing a random pivot point is that quicksort’s performance varies depending on its data**. If you had the array [1, 2, 500, 2, 1] and you pivoted on the center, 500, you’ll do a lot of work for almost no gain. **Choosing a random pivot point every time means that you minimize the chance of consistently choosing a bad pivot point**, which helps quicksort perform well overall.
+ 
+Once you’ve chosen a good pivot point, from the extensive research that’s been done into quicksort, the walk you through what is probably the most optimized form of quicksort I can write from memory. It’s not the fastest out there, but it’s still about 25x faster than the solutions above while still being more or less readable – and still passing this challenge.
+ 
+ ##### Let me walk you through how it works:
+ 1. The function works entirely in place, so it’s a `mutating` method.
+ 2. It’s called using left and right parameters, which marks the array start and end position that’s being sorted. This will initially be 0 and the array length - 1.
+ 3. It picks a pivot at the end of the array, and also creates a variable that marks the point in the array that will store where items are greater than the pivot.
+ 4. It then loops through the array, counting from `left` to `right`. Again, initially that’s 0 and the array length - 1.
+ 5. If the current item being scanned is less than the pivot, it swaps them item with whatever is at the split point, then moves the split point up one place.
+ 6. Move the right parameter (that’s the one being used as our pivot) to the split point.
+ 7. Finally, call itself twice more, passing in the left-hand side first, then the right-hand side second.
+ */
+    //without comment for memorization
+}
+
 
 //: [Next](@next)

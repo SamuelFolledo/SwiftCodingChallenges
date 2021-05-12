@@ -331,7 +331,47 @@ Once you’ve chosen a good pivot point, from the extensive research that’s be
  6. Move the right parameter (that’s the one being used as our pivot) to the split point.
  7. Finally, call itself twice more, passing in the left-hand side first, then the right-hand side second.
  */
-    //without comment for memorization
+    //25x faster quick sort without comment for memorization
+    mutating func challenge59c(left: Int, right: Int) { //initially, left = 0 and right = array length - 1
+        guard left < right else { return }
+        let pivot = self[right]
+        var splitPoint = left
+        for i in left ..< right {
+            if self[i] < pivot {
+                (self[i], self[splitPoint]) = (self[splitPoint], self[i])
+                splitPoint += 1
+            }
+        }
+        (self[right], self[splitPoint]) = (self[splitPoint], self[right])
+        challenge59c(left: left, right: splitPoint - 1)
+        challenge59c(left: splitPoint + 1, right: right)
+    }
+    
+    //25x faster quick sort with comments
+    mutating func challenge59cc(left: Int, right: Int) { //initially, left = 0 and right = array length - 1
+        // make sure we have a sensible range to work with
+        guard left < right else { return }
+        // use the right-hand element, because that's moved last
+        let pivot = self[right]
+        // set our split point – the marker where elements start being greater than the pivot – to be the left edge
+        var splitPoint = left
+        // count through all items in the array
+        for i in left ..< right {
+            // if this item is less than our pivot
+            if self[i] < pivot {
+                // move it so that it's at the split point
+                (self[i], self[splitPoint]) = (self[splitPoint], self[i])
+                // then move the split point forward one place
+                splitPoint += 1
+            }
+        }
+        // move our pivot item to the split point
+        (self[right], self[splitPoint]) = (self[splitPoint], self[right])
+        // recursively call this function on everything before the split…
+        challenge59c(left: left, right: splitPoint - 1)
+        // …and everything after the split
+        challenge59c(left: splitPoint + 1, right: right)
+    }
 }
 
 

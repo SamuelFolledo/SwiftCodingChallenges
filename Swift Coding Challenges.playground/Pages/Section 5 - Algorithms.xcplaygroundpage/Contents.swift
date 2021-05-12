@@ -678,5 +678,36 @@ func challenge63b(fill newNumber: Int, in grid: inout [[Int]], at point: (x: Int
 challenge63b(fill: 5, in: &grid, at: (x: 2, y: 0))
 print("Challenge 63b: Flood fills = \(grid)")
 
+/*:
+ ## Challenge 64: N Queens
+ Difficulty: Taxing
+ 
+ There are M different ways you can place N queens on an NxN chessboard so that none of them are able to capture others. Write a function that calculates them all and prints them to the screen as a visual board layout, and returns the number of solutions it found.
+ 
+ **Tip**: A queen moves in straight lines vertically, horizontally, or diagonally. You need to place all eight queens so that no two share the same row, column, or diagonal.
+ 
+ **Tip**: In the more advanced version of this challenge you would be required to return only the fundamental solutions, which means unique positions excluding rotations and reflections. This is not a requirement here.
+ 
+ ### Sample input and output
+ - In an 8x8 board you need to place 8 queens. There are 92 possible arrangements, so your function should print each of them then return 92.
+ - In a 10x10 board you need to place 10 queens. There are 724 possible arrangements, so your function should print each of them then return 724.
+ ### Here is a suggested example layout for solutions:
+ ``` Here is a suggested example layout for solutions
+ .......Q
+ ...Q....
+ Q.......
+ ..Q.....
+ .....Q..
+ .Q......
+ ......Q.
+ ....Q...
+ ```
+ ### Hints
+ - Hint #1: Your queen placement function ought to call itself. The first time it’s called it represents the first queen being placed, the second it’s the second queen, and so on. If you reach N then you’ve placed all the queens and you have a solution.
+ - Hint #2: In order to be sure you’ve found all solutions, you need to exhaust all possible placements.
+ - Hint #3: Sometimes you will have placed six queens and realized there’s nowhere valid for the seventh to go. Be prepared to backtrack.
+ - Hint #4: Two queens occupy the same column if their X difference is equal to their Y difference, or their X difference is equal to their negative Y difference.
+ - Hint #5: You can solve this problem using a one-dimensional array of integers
+ */
 
 //: [Next](@next)

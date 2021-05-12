@@ -709,5 +709,59 @@ print("Challenge 63b: Flood fills = \(grid)")
  - Hint #4: Two queens occupy the same column if their X difference is equal to their Y difference, or their X difference is equal to their negative Y difference.
  - Hint #5: You can solve this problem using a one-dimensional array of integers
  */
+func challenge64(board: [Int], queen queenNumber: Int) -> Int {
+    if queenNumber == board.count {
+        // we hit a solution – print it out
+//        print("Solution:", board)
+        for row in 0 ..< board.count {
+            for col in 0 ..< board.count {
+                if board[row] == col {
+                    print("Q", terminator: "")
+                } else {
+                    print(".", terminator: "")
+                }          }
+            print("")
+        }
+        print("")
+        return 1
+    } else {
+        // keep track how many solutions were found by our recursive calls
+        var count = 0
+        // loop over every column
+        boardLoop: for column in 0 ..< board.count {
+            // check only queens that are placed already
+            for row in 0 ..< queenNumber {
+                // find where this queen was placed
+                let otherQueenColumn = board[row]
+                // if this queen is placed in the column we are checking, stop checking other queens and go to the next column
+                if otherQueenColumn == column { continue boardLoop }
+                // calculate the difference in our row/column and the checking queen's row/column
+                let deltaRow = queenNumber - row
+                let deltaCol = otherQueenColumn - column
+                // if we are on a diagonal with this queen, stop checking other queens and proceed to the next column
+                if deltaRow == deltaCol { continue boardLoop }
+                if deltaRow == -deltaCol { continue boardLoop }
+            }
+            // if we're still here it means this move is valid, so take a copy of the board and make the move on the copy
+            var boardCopy = board
+            boardCopy[queenNumber] = column
+            // now call ourselves recursively, placing one queen number higher, and adding it return value to our solution counter
+            count += challenge64(board: boardCopy, queen: queenNumber + 1)
+        }
+        // return our solution counter to the caller
+        return count
+    }
+}
+// create an initial board full of zeros
+let emptyBoard = [Int](repeating: 0, count: 8)
+// call the solution function with the first queen and an empty board
+let solutionCount = challenge64(board: emptyBoard, queen: 0)
+print("Found \(solutionCount) solutions")
+
+/*:
+ ### Note
+ If you don’t mind using inout for your board rather than making changes on a copy, you can make the algorithm perform more than 2x faster with no other changes. In my opinion, **using inout for speed is only a good idea if you’re working with performance-critical code** – the principle of least astonishment applies to code too, and making copies of your data structure is easier to understand.
+
+ */
 
 //: [Next](@next)

@@ -457,5 +457,25 @@ func challenge60c(_ board: [[String]]) -> Bool {
     return isWin(board[0][0], board[1][1], board[2][2]) || isWin(board[0][2], board[1][1], board[2][0])
 }
 
+/*
+ ## Challenge 61: Find prime numbers
+ Difficulty: Tricky
+ 
+ Write a function that returns an array of prime numbers from 2 up to but excluding N, taking care to be as efficient as possible.
+ 
+ **Tip**: Calculating primes is easy. Calculating primes efficiently is not. Take care!
+ 
+ ### Sample input and output
+ - The code `challenge61(upTo: 10)` should return 2, 3, 5, 7.
+ - The code `challenge61(upTo: 11)` should return 2, 3, 5, 7; remember to exclude the upper bound.
+ - The code challenge61(upTo: 12) should return 2, 3, 5, 7, 11.
+ ### Hints
+ - Hint #1: Writing code to find whether one number is prime or not is very different to writing code to find all prime numbers – there’s a reason this is in the algorithms chapter.
+ - Hint #2: When given a number, you decide whether it’s prime by checking whether it has any factors. When given a range of numbers, you want to take the opposite approach: assume all numbers are prime, then remove numbers that are composites by multiplying primes.
+ - Hint #3: This is known as the Sieve of Eratosthenes: take the number 2, then mark all multiples of 2 as being not prime. Then take the number 3 and repeat. Then 5 (no need to check 4; that’s a multiple of 2), then 7 (no need to check 6; that’s a multiple of 3), and so on. What remains must be prime.
+ - Hint #4: Once you have an array containing which numbers are prime and which are not, you just need to extract the numbers that are prime and return them.
+
+ */
+
 
 //: [Next](@next)

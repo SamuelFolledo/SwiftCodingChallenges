@@ -627,6 +627,28 @@ print("Challenge 62: Points to Angles = ", challenge62(points: points))
  - Hint #3: Keep a stack of squares that need to be filled. Start by adding your initial square, then loop over that and remove one square to fill / spread from each time.
  */
 
+func challenge63a(fill: Int, in grid: [[Int]], at point: (x: Int, y: Int)) -> [[Int]] {
+    var returnValue = grid
+    var squaresToFill = [point]
+    let startNumber = grid[point.y][point.x]
+    func tryAddMove(_ move: (x: Int, y: Int)) {
+        guard move.x >= 0 else { return }
+        guard move.x < 10 else { return }
+        guard move.y >= 0 else { return  }
+        guard move.y < 10 else  { return }
+        guard returnValue[move.y][move.x] == startNumber else { return }
+        squaresToFill.append(move)
+    }
+    while let square = squaresToFill.popLast() {
+        guard returnValue[square.y][square.x] != fill else { continue }
+        returnValue[square.y][square.x] = fill
+        tryAddMove((x: square.x, y: square.y - 1))
+        tryAddMove((x: square.x, y: square.y + 1))
+        tryAddMove((x: square.x - 1, y: square.y))
+        tryAddMove((x: square.x + 1, y: square.y))
+    }
+    return returnValue
+}
 
 
 //: [Next](@next)

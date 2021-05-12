@@ -368,11 +368,14 @@ Once you’ve chosen a good pivot point, from the extensive research that’s be
         // move our pivot item to the split point
         (self[right], self[splitPoint]) = (self[splitPoint], self[right])
         // recursively call this function on everything before the split…
-        challenge59c(left: left, right: splitPoint - 1)
+        challenge59cc(left: left, right: splitPoint - 1)
         // …and everything after the split
-        challenge59c(left: splitPoint + 1, right: right)
+        challenge59cc(left: splitPoint + 1, right: right)
     }
 }
+
+let arr = [1,3,4,5,3,2,1,6,8,1,2]
+print("Challenge 59a: \(arr.challenge59a())")
 
 /*
  ## Challenge 60: Tic-Tac-Toe winner
@@ -457,7 +460,7 @@ func challenge60c(_ board: [[String]]) -> Bool {
     return isWin(board[0][0], board[1][1], board[2][2]) || isWin(board[0][2], board[1][1], board[2][0])
 }
 
-/*
+/*:
  ## Challenge 61: Find prime numbers
  Difficulty: Tricky
  
@@ -475,7 +478,36 @@ func challenge60c(_ board: [[String]]) -> Bool {
  - Hint #3: This is known as the Sieve of Eratosthenes: take the number 2, then mark all multiples of 2 as being not prime. Then take the number 3 and repeat. Then 5 (no need to check 4; that’s a multiple of 2), then 7 (no need to check 6; that’s a multiple of 3), and so on. What remains must be prime.
  - Hint #4: Once you have an array containing which numbers are prime and which are not, you just need to extract the numbers that are prime and return them.
 
+ #### Sieve of Erastosthenes
+ - an algorithm that is over 2000 years old
+ - Here it is: mark your entire range of numbers as being prime, so let’s say that’s 0 to 10. We know that 0 and 1 can’t be prime by definition, so we mark those as not prime. Now we loop from 2 up to the maximum of our range: if that number is currently marked prime, then we can mark all its multiples as not prime. So, 2 is prime, which means 4, 6, and 8 are not, so we mark them as not prime. We then continue to the next number, which is 3, and mark its multiples as not prime: 6 and 9. We then continue to 4, but it’s already been marked as not prime so we can continue to 5, and so on.
  */
 
+func challenge61(upTo max: Int) -> [Int] {
+    guard max > 1 else { return [] }
+    var sieve = [Bool](repeating: true, count: max) //create an array of True up to the max
+    sieve[0] = false
+    sieve[1] = false
+    for number in 2 ..< max {
+        if sieve[number] == true {
+            for multiple in stride(from: number * number, to: sieve.count, by: number) {
+                /*
+                 stride(from:to:by:)
+                    - Returns a sequence from a starting value to, but not including, an end value, stepping by the specified amount.
+                    - by parameter = The amount to step by with each iteration. A positive stride iterates upward; a negative stride iterates downward.
+                    - Return value = A sequence from start toward, but not including, end. Each value in the sequence steps by stride.
+                */
+                sieve[multiple] = false
+            }
+        }
+    }
+    return sieve.enumerated().compactMap { $1 == true ? $0 : nil } //if value is true
+}
+
+print("Challenge 61: \(challenge61(upTo: 100))")
+
+/*
+ 
+ */
 
 //: [Next](@next)

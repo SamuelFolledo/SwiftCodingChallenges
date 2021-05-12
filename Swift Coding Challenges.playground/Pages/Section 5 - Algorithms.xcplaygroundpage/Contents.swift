@@ -650,5 +650,24 @@ func challenge63a(fill: Int, in grid: [[Int]], at point: (x: Int, y: Int)) -> [[
     return returnValue
 }
 
+//recursive solution
+func challenge63b(fill newNumber: Int, in grid: inout [[Int]], at point: (x: Int, y: Int), replacing: Int? = nil) {
+    // bail out if this position is invalid
+    guard point.x >= 0 else { return }
+    guard point.x < 10 else { return }
+    guard point.y >= 0 else { return  }
+    guard point.y < 10 else { return }
+    // `replacing` will be set on 2nd and subsequent runs
+    let startNumber = replacing ?? grid[point.y][point.x]
+    if grid[point.y][point.x] == startNumber {
+        // adjust this point
+        grid[point.y][point.x] = newNumber
+        // and fill in surrounding squares
+        challenge63b(fill: newNumber, in: &grid, at: (x: point.x, y: point.y - 1), replacing: startNumber)
+        challenge63b(fill: newNumber, in: &grid, at: (x: point.x, y: point.y + 1), replacing: startNumber)
+        challenge63b(fill: newNumber, in: &grid, at: (x: point.x - 1, y: point.y), replacing: startNumber)
+        challenge63b(fill: newNumber, in: &grid, at: (x: point.x + 1, y: point.y), replacing: startNumber)
+    }
+}
 
 //: [Next](@next)

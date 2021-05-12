@@ -376,6 +376,9 @@ Once you’ve chosen a good pivot point, from the extensive research that’s be
 
 let arr = [1,3,4,5,3,2,1,6,8,1,2]
 print("Challenge 59a Quick sort: \(arr.challenge59a())")
+var arr2 = [1,3,4,5,3,2,1,6,8,1,2]
+arr2.challenge59cc(left: 0, right: arr2.count - 1)
+print("Challenge 59cc Recursive Quick sort: \(arr2)")
 
 /*
  ## Challenge 60: Tic-Tac-Toe winner
@@ -626,6 +629,9 @@ print("Challenge 62: Points to Angles = ", challenge62(points: points))
  - Hint #2: You will almost certainly find it useful to add print() statements inside your loop or function that displays what square is being manipulated, and perhaps also the current grid.
  - Hint #3: Keep a stack of squares that need to be filled. Start by adding your initial square, then loop over that and remove one square to fill / spread from each time.
  */
+import GameplayKit //needed for GKMersenneTwisterRandomSource
+let random = GKMersenneTwisterRandomSource(seed: 1)
+var grid = (1...10).map { _ in (1...10).map { _ in Int(random.nextInt(upperBound: 2)) } }
 
 func challenge63a(fill: Int, in grid: [[Int]], at point: (x: Int, y: Int)) -> [[Int]] {
     var returnValue = grid
@@ -669,5 +675,8 @@ func challenge63b(fill newNumber: Int, in grid: inout [[Int]], at point: (x: Int
         challenge63b(fill: newNumber, in: &grid, at: (x: point.x + 1, y: point.y), replacing: startNumber)
     }
 }
+challenge63b(fill: 5, in: &grid, at: (x: 2, y: 0))
+print("Challenge 63b: Flood fills = \(grid)")
+
 
 //: [Next](@next)

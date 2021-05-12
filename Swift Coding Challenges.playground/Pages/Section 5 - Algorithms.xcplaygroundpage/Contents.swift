@@ -200,7 +200,7 @@ func challenge57(first firstValue: Any, second secondValue: Any) -> Bool {
     return true
 }
 
-print("Challenge 57: ", challenge57(first: "clap", second: "slap"))
+print("Challenge 57 Isomorphic values: ", challenge57(first: "clap", second: "slap"))
 
 /*:
  ## Challenge 58: Balanced brackets
@@ -259,7 +259,7 @@ func challenge58(input: String) -> Bool {
     return usedBrackets.count == 0
 }
 
-print("Challenge 58: \(challenge58(input: "{}(()})"))")
+print("Challenge 58 Balanced brackets: \(challenge58(input: "{}(()})"))")
 
 /*:
  ## Challenge 59: Quicksort
@@ -375,7 +375,7 @@ Once you’ve chosen a good pivot point, from the extensive research that’s be
 }
 
 let arr = [1,3,4,5,3,2,1,6,8,1,2]
-print("Challenge 59a: \(arr.challenge59a())")
+print("Challenge 59a Quick sort: \(arr.challenge59a())")
 
 /*
  ## Challenge 60: Tic-Tac-Toe winner
@@ -504,7 +504,7 @@ func challenge61(upTo max: Int) -> [Int] {
     return sieve.enumerated().compactMap { $1 == true ? $0 : nil } //if value is true
 }
 
-print("Challenge 61: \(challenge61(upTo: 100))")
+print("Challenge 61 Find Primes: \(challenge61(upTo: 100))")
 
 /*:
  ## Challenge 62: Points to angles
@@ -535,5 +535,30 @@ print("Challenge 61: \(challenge61(upTo: 100))")
  - Hint #3: `atan2()` works in radians, so you’ll need to convert the value to degrees using the formula `degrees = radians * 180 / Double.pi`.
  - Hint #4: Where “0” lies is of course arbitrary, but the convention is that 0 degrees runs along the positive X axis. You need to correct for this.
  */
+
+import UIKit
+
+func challenge62(points: [(first: CGPoint, second: CGPoint)]) -> [CGFloat] {
+    //this is common when working with UIPanGestureRecognizer
+    return points.map {
+        let radians = atan2($0.first.y - $0.second.y, $0.first.x - $0.second.x)
+        var degrees = (radians * 180 / CGFloat.pi) - 90
+        if (degrees < 0) { degrees += 360.0 }
+        if degrees == 360 { degrees = 0 }
+        return degrees
+    }
+}
+
+var points = [(first: CGPoint, second: CGPoint)]()
+points.append((first: CGPoint.zero, second: CGPoint(x: 0, y: -100)))
+points.append((first: CGPoint.zero, second: CGPoint(x: 100, y: -100)))
+points.append((first: CGPoint.zero, second: CGPoint(x: 100, y: 0)))
+points.append((first: CGPoint.zero, second: CGPoint(x: 100, y: 100)))
+points.append((first: CGPoint.zero, second: CGPoint(x: 0, y: 100)))
+points.append((first: CGPoint.zero, second: CGPoint(x: -100, y: 100)))
+points.append((first: CGPoint.zero, second: CGPoint(x: -100, y: 0)))
+points.append((first: CGPoint.zero, second: CGPoint(x: -100, y: -100)))
+print("Challenge 62: Points to Angles = ", challenge62(points: points))
+
 
 //: [Next](@next)

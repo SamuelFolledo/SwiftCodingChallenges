@@ -229,6 +229,11 @@ print("Challenge 57: ", challenge57(first: "clap", second: "slap"))
  */
 
 func challenge58(input: String) -> Bool {
+    /*
+     first, though: ensuring that only brackets appear in the string.
+     This can be done by creating a CharacterSet from the list of good letters (([{<>}])),
+     then inverting the set and ensuring the input string doesn’t match
+     */
     let validBrackets = "([{<>}])"
     let validCharacterSet = CharacterSet(charactersIn: validBrackets).inverted
     guard input.rangeOfCharacter(from: validCharacterSet) == nil else { return false }

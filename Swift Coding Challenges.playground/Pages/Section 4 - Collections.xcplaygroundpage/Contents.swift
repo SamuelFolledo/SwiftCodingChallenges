@@ -522,6 +522,33 @@ Extend your linked list class with a new method that returns the node at the mid
  */
 
 /*:
+ ## Merge 2 Sorted Linked List
+ */
+
+func mergeTwoLists(_ l1: LinkedListNode<Int>?, _ l2: LinkedListNode<Int>?) -> LinkedListNode<Int>? {
+    var list1 = l1
+    var list2 = l2
+    
+    let head: LinkedListNode = LinkedListNode(value: 0)
+    var tmp = head
+    while list1 != nil && list2 != nil {
+        let v1 = list1!.value
+        let v2 = list2!.value
+        
+        if v1 > v2 {
+            tmp.next = list2!
+            list2 = list2?.next
+        } else {
+            tmp.next = list1!
+            list1 = list1?.next
+        }
+        tmp = tmp.next!
+    }
+    tmp.next = list1 ?? list2
+    return head.next
+}
+
+/*:
  ## Challenge 54: Binary search trees
  Difficulty: Taxing
  

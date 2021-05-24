@@ -9,30 +9,33 @@ import Foundation
 
 func hourglassSum(arr: [[Int]]) -> Int {
     func getHourglass(row: Int, column: Int) -> [Int] {
-        let start = arr[row][column]
         return [arr[row][column], arr[row][column+1], arr[row][column+2],
                 arr[row+1][column+1],
                 arr[row+2][column], arr[row+2][column+1], arr[row+2][column+2],
         ]
     }
     
-    let maxSum = 0
+    var maxSum = 0
     // Write your code here
-    for row in arr.count - 2 {
-        for column in arr[row].count - 2 {
+    for row in 0..<arr.count - 2 {
+        for column in 0..<arr[row].count - 2 {
             let hourglass = getHourglass(row: row, column: column)
-            print("Hourglass \(row), \(column) = \(hourglass)")
+            let total = hourglass.reduce(0){$0+$1}
+            print("Hourglass \(row), \(column): \(hourglass) = \(total)")
+            if total > maxSum {
+                maxSum = total
+            }
         }
     }
     return maxSum
 }
 
 let arr = [[-9, -9, -9, 1, 1, 1],
-[0, -9, 0, 4, 3, 2],
-[-9, -9, -9, 1, 2, 3],
-[0, 0, 8, 6, 6, 0],
-[0, 0, 0, -2, 0, 0],
-[0, 0, 1, 2, 4, 0,]]
+           [0, -9, 0, 4, 3, 2],
+           [-9, -9, -9, 1, 2, 3],
+           [0, 0, 8, 6, 6, 0],
+           [0, 0, 0, -2, 0, 0],
+           [0, 0, 1, 2, 4, 0,]]
 print(hourglassSum(arr: arr))
 
 //: [Next](@next)

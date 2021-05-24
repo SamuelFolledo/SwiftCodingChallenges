@@ -14,5 +14,6 @@
         <page name='SPD2.4'/>
         <page name='Codility'/>
         <page name='Section 5 - Algorithms'/>
+        <page name='HackerRank'/>
     </pages>
 </playground>

@@ -15,7 +15,7 @@ func hourglassSum(arr: [[Int]]) -> Int {
         ]
     }
     
-    var maxSum = 0
+    var maxSum = Int.min
     // Write your code here
     for row in 0..<arr.count - 2 {
         for column in 0..<arr[row].count - 2 {

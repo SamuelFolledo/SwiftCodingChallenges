@@ -38,4 +38,25 @@ let arr = [[-9, -9, -9, 1, 1, 1],
            [0, 0, 1, 2, 4, 0,]]
 print(hourglassSum(arr: arr))
 
+/*:
+ ## Two Strings
+ Given two strings, determine if they share a common substring. A substring may be as small as one character.
+
+ ### Example
+ ```
+ s1 = 'and'
+ s2 = 'art'
+ ```
+ 
+ These share the common substring *a*.
+ 
+ 
+ ```
+ s1 = 'be'
+ s2 = 'cat'
+ ```
+
+ These do not share a substring.
+ */
+
 //: [Next](@next)

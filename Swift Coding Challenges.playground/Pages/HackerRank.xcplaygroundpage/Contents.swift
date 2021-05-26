@@ -2,7 +2,7 @@
 
 import Foundation
 
-/*
+/*:
  ## [2D Array - Max Hourglass Sum](https://www.hackerrank.com/challenges/2d-array/problem)
  Given a 6x6 2D Array *arr*, which has 16 hourglasses, calculate the hourglass sum for every hourglass in *arr*, then print the maximum hourglass sum
  */

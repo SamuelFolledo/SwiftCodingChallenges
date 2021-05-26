@@ -15,5 +15,6 @@
         <page name='Codility'/>
         <page name='Section 5 - Algorithms'/>
         <page name='HackerRank'/>
+        <page name='LeetCode'/>
     </pages>
 </playground>

@@ -32,8 +32,28 @@ import UIKit
  */
 
 func squareIsWhite(_ coordinates: String) -> Bool {
-    return true
+//    var isWhite = true
+    let letters: [String] = ["a", "b", "c", "d", "e", "f", "g", "h"]
+    var chessboardDic: [String: Bool] = [:] //["a1": false, "b1": true, ...]
+    var value = false
+    for num in 1...8 {
+        for letter in letters {
+//            print("\(letter)\(num)")
+//            chessboardDic["\(letter)\(num)"] = value
+            if "\(letter)\(num)" == coordinates {
+                return value
+            }
+            value = !value
+        }
+        value = !value
+    }
+//    print("Result \(chessboardDic[coordinates])")
+//    isWhite = chessboardDic[coordinates]!
+//    return isWhite
+    return false
 }
+
+print(squareIsWhite("a1"))
 
 /*
  ## 1464. [Maximum Product of Two Elements in an Array](https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/)
@@ -64,7 +84,7 @@ func maxProduct(_ nums: [Int]) -> Int {
     return 0
 }
 
-/*
+/*:
  ## 1304. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)
  
  Given an integer n, return any array containing n unique integers such that they add up to 0.
@@ -86,4 +106,7 @@ func maxProduct(_ nums: [Int]) -> Int {
  - 1 <= n <= 1000
  */
 
+func sumZero(_ n: Int) -> [Int] {
+    return []
+}
 //: [Next](@next)

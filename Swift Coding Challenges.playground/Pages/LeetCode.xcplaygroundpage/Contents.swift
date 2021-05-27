@@ -32,24 +32,17 @@ import UIKit
  */
 
 func squareIsWhite(_ coordinates: String) -> Bool {
-//    var isWhite = true
     let letters: [String] = ["a", "b", "c", "d", "e", "f", "g", "h"]
-    var chessboardDic: [String: Bool] = [:] //["a1": false, "b1": true, ...]
-    var value = false
+    var isBlack = false
     for num in 1...8 {
         for letter in letters {
-//            print("\(letter)\(num)")
-//            chessboardDic["\(letter)\(num)"] = value
             if "\(letter)\(num)" == coordinates {
-                return value
+                return isBlack
             }
-            value = !value
+            isBlack = !isBlack
         }
-        value = !value
+        isBlack = !isBlack
     }
-//    print("Result \(chessboardDic[coordinates])")
-//    isWhite = chessboardDic[coordinates]!
-//    return isWhite
     return false
 }
 

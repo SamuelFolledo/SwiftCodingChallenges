@@ -33,15 +33,15 @@ import UIKit
 
 func squareIsWhite(_ coordinates: String) -> Bool {
     let letters: [String] = ["a", "b", "c", "d", "e", "f", "g", "h"]
-    var isBlack = false
+    var isWhite = false
     for num in 1...8 {
         for letter in letters {
             if "\(letter)\(num)" == coordinates {
-                return isBlack
+                return isWhite
             }
-            isBlack = !isBlack
+            isWhite = !isWhite
         }
-        isBlack = !isBlack
+        isWhite = !isWhite
     }
     return false
 }

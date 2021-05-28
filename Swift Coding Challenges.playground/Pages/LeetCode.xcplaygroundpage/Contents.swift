@@ -48,7 +48,7 @@ func squareIsWhite(_ coordinates: String) -> Bool {
 
 print(squareIsWhite("a1"))
 
-/*
+/*:
  ## 1464. [Maximum Product of Two Elements in an Array](https://leetcode.com/problems/maximum-product-of-two-elements-in-an-array/)
  
  Given the array of integers nums, you will choose two different indices i and j of that array. *Return the maximum value of* `(nums[i]-1)*(nums[j]-1)`.
@@ -74,8 +74,19 @@ print(squareIsWhite("a1"))
  */
 
 func maxProduct(_ nums: [Int]) -> Int {
-    return 0
+    var maxProduct = Int.min
+    for i in 0..<nums.count {
+        for j in i+1..<nums.count {
+            let product = (nums[i] - 1) * (nums[j] - 1)
+            if maxProduct < product {
+                maxProduct = product
+            }
+        }
+    }
+    return maxProduct
 }
+
+print("Max Product \(maxProduct([3,7,8,6]))")
 
 /*:
  ## 1304. [Find N Unique Integers Sum up to Zero](https://leetcode.com/problems/find-n-unique-integers-sum-up-to-zero/)

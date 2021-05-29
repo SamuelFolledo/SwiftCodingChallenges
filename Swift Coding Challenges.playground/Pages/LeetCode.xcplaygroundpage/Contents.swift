@@ -111,7 +111,17 @@ print("Max Product \(maxProduct([3,7,8,6]))")
  */
 
 func sumZero(_ n: Int) -> [Int] {
-    if n == 0 { return [0] }
-    return []
+    var results: [Int] = n % 2 == 0 ? [] : [0] //empty array or add 0 if n is odd
+    for i in 1...n {
+        results.append(i)
+        results.append(i * -1)
+        if results.count == n {
+            return results
+        }
+    }
+    return results
 }
+
+print("Sum Zero = \(sumZero(5))")
+
 //: [Next](@next)

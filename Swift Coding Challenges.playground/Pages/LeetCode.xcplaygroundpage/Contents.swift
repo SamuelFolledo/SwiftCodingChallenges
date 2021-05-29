@@ -111,6 +111,7 @@ print("Max Product \(maxProduct([3,7,8,6]))")
  */
 
 func sumZero(_ n: Int) -> [Int] {
+    if n == 0 { return [0] }
     return []
 }
 //: [Next](@next)

@@ -124,8 +124,8 @@ func sumZero(_ n: Int) -> [Int] {
 
 print("Sum Zero = \(sumZero(5))")
 
-/*
- ## 617. Merge Two Binary Trees
+/*:
+ ## 617. [Merge Two Binary Trees](https://leetcode.com/problems/merge-two-binary-trees/)
  Easy
 
  You are given two binary trees root1 and root2.
@@ -169,7 +169,7 @@ func mergeTrees(_ root1: TreeNode?, _ root2: TreeNode?) -> TreeNode? {
     return nil
 }
 
-/*
+/*:
  ## [1572. Matrix Diagonal Sum](https://leetcode.com/problems/matrix-diagonal-sum/)
  Given a square matrix mat, return the sum of the matrix diagonals.
 

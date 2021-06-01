@@ -226,6 +226,10 @@ func diagonalSum(_ mat: [[Int]]) -> Int {
     return sum
 }
 
+let mat1 = [[1,2,3], [4,5,6], [7,8,9]]
+let mat2 = [[1,1,1,1], [1,1,1,1], [1,1,1,1], [1,1,1,1]]
+print("Diagonal Sum for \(mat1) = \(diagonalSum(mat1))")
+print("Diagonal Sum for \(mat2) = \(diagonalSum(mat2))")
 /*:
  ## [1450. Number of Students Doing Homework at a Given Time](https://leetcode.com/problems/number-of-students-doing-homework-at-a-given-time/)
 

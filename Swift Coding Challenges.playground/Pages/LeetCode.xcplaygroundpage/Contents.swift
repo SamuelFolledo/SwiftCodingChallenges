@@ -202,7 +202,28 @@ func mergeTrees(_ root1: TreeNode?, _ root2: TreeNode?) -> TreeNode? {
  */
 
 func diagonalSum(_ mat: [[Int]]) -> Int {
-    return 0
+    var sum = 0
+    let matCount = mat.count
+    var half = matCount / 2
+    if matCount % 2 == 0 { //if matCount is even
+        half -= 1
+    }
+    for rowIndex in 0...half {
+        for columnIndex in rowIndex...half {
+            let lastRowIndex = matCount - 1 - rowIndex
+            if rowIndex == lastRowIndex { //if middle
+                sum += mat[rowIndex][columnIndex] //increment once
+            } else {
+                let lastColumnIndex = matCount - 1 - columnIndex
+                sum += mat[rowIndex][columnIndex]
+                sum += mat[rowIndex][lastColumnIndex]
+                sum += mat[lastRowIndex][columnIndex]
+                sum += mat[lastRowIndex][lastColumnIndex]
+            }
+            break
+        }
+    }
+    return sum
 }
 
 /*:

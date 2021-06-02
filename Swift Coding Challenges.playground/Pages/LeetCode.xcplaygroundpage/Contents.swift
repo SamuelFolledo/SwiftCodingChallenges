@@ -310,4 +310,8 @@ func busyStudent(_ startTime: [Int], _ endTime: [Int], _ queryTime: Int) -> Int 
  - shift(s[i-1], s[i]) <= 'z' for all odd indices i.
  */
 
+func replaceDigits(_ s: String) -> String {
+    return ""
+}
+
 //: [Next](@next)

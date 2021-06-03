@@ -314,4 +314,7 @@ func replaceDigits(_ s: String) -> String {
     return ""
 }
 
+let stringToReplace = "a1c1e1"
+print("Replace Digits: s - \(stringToReplace) = \(replaceDigits(stringToReplace))")
+
 //: [Next](@next)

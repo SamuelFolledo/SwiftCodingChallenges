@@ -311,7 +311,21 @@ func busyStudent(_ startTime: [Int], _ endTime: [Int], _ queryTime: Int) -> Int 
  */
 
 func replaceDigits(_ s: String) -> String {
-    return ""
+    if s.count == 1 { return s }
+    let alphabets = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    var result = ""
+    for (index, value) in s.enumerated() {
+        if index % 2 == 1 { continue } //skip numbers (if index is odd, continue)
+        let letter = String(value)
+        result += letter
+        let letterIndex = alphabets.firstIndex(of: String(letter)) //index of the letter in alphabets
+        let number = s[s.index(s.startIndex, offsetBy: index + 1)] //get the letter (which is a number) at the right of the current letter
+        let nextLetterIndex = Int(letterIndex!) + Int(String(number))! //add the letter's index in alphabet and the number at the right of the letter
+        let nextLetter = alphabets[nextLetterIndex] //get the letter from the index
+        result += nextLetter
+//        print("\(letter) + \(number) = \(nextLetter)")
+    }
+    return result
 }
 
 let stringToReplace = "a1c1e1"

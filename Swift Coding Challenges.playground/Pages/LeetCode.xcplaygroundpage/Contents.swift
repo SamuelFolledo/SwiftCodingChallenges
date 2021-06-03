@@ -328,7 +328,7 @@ func replaceDigits(_ s: String) -> String {
     return result
 }
 
-let stringToReplace = "a1c1e1"
-print("Replace Digits: s - \(stringToReplace) = \(replaceDigits(stringToReplace))")
+let stringToReplace = "a1c3e2"
+print("Replace Digits: \(stringToReplace) = \(replaceDigits(stringToReplace))")
 
 //: [Next](@next)

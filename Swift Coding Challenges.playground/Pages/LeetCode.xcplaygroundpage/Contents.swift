@@ -286,6 +286,9 @@ func busyStudent(_ startTime: [Int], _ endTime: [Int], _ queryTime: Int) -> Int 
     return busyStudentCounter
 }
 
+let startTime = [9,8,7,6,5,4,3,2,1], endTime = [10,10,10,10,10,10,10,10,10], queryTime = 5
+print("Busy Student \(busyStudent(startTime, endTime, queryTime))")
+
 /*:
  ## [1844. Replace All Digits with Characters](https://leetcode.com/problems/replace-all-digits-with-characters/)
  

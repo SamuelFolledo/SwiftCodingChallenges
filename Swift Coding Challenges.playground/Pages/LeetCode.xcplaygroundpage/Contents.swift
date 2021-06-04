@@ -272,7 +272,18 @@ print("Diagonal Sum for \(mat2) = \(diagonalSum(mat2))")
  */
 
 func busyStudent(_ startTime: [Int], _ endTime: [Int], _ queryTime: Int) -> Int {
-    return 0
+    var busyStudentCounter = 0
+    for i in 0..<startTime.count {
+        let start = startTime[i]
+        let end = endTime[i]
+        switch queryTime {
+        case start...end: //if queryTime is between start - end, increment busy student
+            busyStudentCounter += 1
+        default:
+             break
+        }
+    }
+    return busyStudentCounter
 }
 
 /*:

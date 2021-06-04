@@ -318,17 +318,17 @@ func replaceDigits(_ s: String) -> String {
         if index % 2 == 1 { continue } //skip numbers (if index is odd, continue)
         let letter = String(value)
         result += letter
+        if s.count - 1 == index { continue } //skip if letter was last
         let letterIndex = alphabets.firstIndex(of: String(letter)) //index of the letter in alphabets
         let number = s[s.index(s.startIndex, offsetBy: index + 1)] //get the letter (which is a number) at the right of the current letter
         let nextLetterIndex = Int(letterIndex!) + Int(String(number))! //add the letter's index in alphabet and the number at the right of the letter
         let nextLetter = alphabets[nextLetterIndex] //get the letter from the index
         result += nextLetter
-//        print("\(letter) + \(number) = \(nextLetter)")
     }
     return result
 }
 
-let stringToReplace = "a1c3e2"
+let stringToReplace = "a1b2c3d4e" //"a1c3e2"
 print("Replace Digits: \(stringToReplace) = \(replaceDigits(stringToReplace))")
 
 //: [Next](@next)

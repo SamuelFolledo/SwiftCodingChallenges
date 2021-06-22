@@ -376,5 +376,9 @@ print("Replace Digits: \(stringToReplace) = \(replaceDigits(stringToReplace))")
  - n is even.
  - 1 <= nums[i] <= 105
  */
+func minPairSum(_ nums: [Int]) -> Int {
+    
+}
+
 
 //: [Next](@next)

@@ -377,8 +377,18 @@ print("Replace Digits: \(stringToReplace) = \(replaceDigits(stringToReplace))")
  - 1 <= nums[i] <= 105
  */
 func minPairSum(_ nums: [Int]) -> Int {
-    
+    let numCount = nums.count
+    let sortedNums = nums.sorted()
+    var maxPairSum = 0
+    for i in 0 ..< numCount / 2 {
+        let newSum = sortedNums[i] + sortedNums[numCount - i - 1]
+        maxPairSum = max(maxPairSum, newSum)
+    }
+    return maxPairSum
 }
+
+let minPairArray = [3,5,2,3] //[3,5,4,2,4,6]
+print("MinPair Sum for \(minPairArray) = \(minPairSum(minPairArray))")
 
 
 //: [Next](@next)
